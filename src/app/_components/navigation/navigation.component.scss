@@ -1,0 +1,32 @@
+@import 'breakpoints';
+
+:host{
+    font-family: 'Prata', serif;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+.nav-menu{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    @include sm {
+        margin: 0 32px;
+    }
+
+    li{
+        font-size: 16px;
+        margin: 24px;
+        letter-spacing: 0.3px;
+
+        @include sm {
+            font-size: 24px;
+            margin: 32px;
+        }
+    }
+}
