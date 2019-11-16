@@ -1,0 +1,34 @@
+@import 'breakpoints';
+
+:host{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+museum-information-leaflet{
+    position: fixed;
+    bottom: 0px;
+    right: 32px;
+    transform: translateY(32px);
+    transition: transform .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:hover,&:focus{
+        transform: translateY(0);
+    }
+
+    @include sm {
+        right: 64px;
+    }
+}
+
+museum-exhibition-details{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left: 0;
+}

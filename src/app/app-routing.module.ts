@@ -4,8 +4,9 @@ import { EntranceComponent } from './entrance/entrance.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'entrance', pathMatch: 'full' },
-  { path: 'entrance', component: EntranceComponent }
+  { path: 'entrance', component: EntranceComponent },
+  { path: 'exhibition', loadChildren: () => import('./exhibition/exhibition.module').then(m => m.ExhibitionModule) },
+  { path: '', redirectTo: 'entrance', pathMatch: 'full' }
 ];
 
 @NgModule({

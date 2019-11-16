@@ -7,7 +7,9 @@ html,body{
     width: 100%;
     height: 100%;
     padding: 0;
-    margin: 0 auto;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
 }
 
 ul{
@@ -32,6 +34,6 @@ a{
 }
 
 button{
-    outline: none;
-    outline-offset: -2px;
+    // outline: none;
+    outline-offset: 2px;
 }

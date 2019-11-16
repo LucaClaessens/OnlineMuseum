@@ -1,0 +1,8 @@
+<h1>Exhibition {{ exhibitionId$ | async }}</h1>
+
+<museum-information-leaflet (clicked)="displayDetails()"
+                            tabindex=0
+                            title="More information about this exhibition."></museum-information-leaflet>
+
+<museum-exhibition-details (exit)="closeDetails()"
+                           *ngIf="detailsVisible$ | async"></museum-exhibition-details>
