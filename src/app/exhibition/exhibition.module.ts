@@ -4,11 +4,12 @@ import { ExhibitionComponent } from './exhibition.component';
 import { ExhibitionRoutingModule } from './exhibition-routing.module';
 import { SharedModule } from '../_shared/shared.module';
 import { ExhibitionDetailsComponent } from './exhibition-details/exhibition-details.component';
+import { ExhibitionNavigationComponent } from './exhibition-navigation/exhibition-navigation.component';
 
 
 
 @NgModule({
-  declarations: [ExhibitionComponent, ExhibitionDetailsComponent],
+  declarations: [ExhibitionComponent, ExhibitionDetailsComponent, ExhibitionNavigationComponent],
   imports: [
     CommonModule,
     ExhibitionRoutingModule,

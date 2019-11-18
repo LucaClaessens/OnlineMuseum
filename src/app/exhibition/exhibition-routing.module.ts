@@ -4,8 +4,8 @@ import { ExhibitionComponent } from './exhibition.component';
 
 
 const routes: Routes = [
-    { path: ':id', component: ExhibitionComponent },
-    { path: '', redirectTo: 'current', pathMatch: 'full' }
+    { path: ':id/:showDetails', component: ExhibitionComponent },
+    { path: '', redirectTo: 'current/false', pathMatch: 'full' }
 ];
 
 @NgModule({

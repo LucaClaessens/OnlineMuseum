@@ -1,6 +1,6 @@
 @import 'breakpoints';
 
-$hamburger-layer-color: black;
+$hamburger-layer-color: white;
 $hamburger-padding-x: 16px;
 $hamburger-padding-y: 17px; 
 $hamburger-layer-width: 20px;
@@ -65,9 +65,12 @@ $hamburger-layer-spacing: 6px;
 }
 
 button.hamburger{
-    // border: 2px solid white;
-    background-color: white;
+    background-color: black;
     border-radius: 100%;
+    border: 2px solid black;
+    &:hover{
+        border-color: white;
+    }
     .hamburger-box{
         transform: translateY(2px) !important;
     }

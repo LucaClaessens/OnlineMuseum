@@ -1,8 +1,18 @@
-<h1>Exhibition {{ exhibitionId$ | async }}</h1>
+<ng-container *ngIf="exhibitionId$ | async as id">
+    <h1 *ifChanges="id"
+        [@fadeValueChange]>Exhibition {{ id }}</h1>
+</ng-container>
 
-<museum-information-leaflet (clicked)="displayDetails()"
-                            tabindex=0
-                            title="More information about this exhibition."></museum-information-leaflet>
 
-<museum-exhibition-details (exit)="closeDetails()"
-                           *ngIf="detailsVisible$ | async"></museum-exhibition-details>
+<ng-container *ngIf="exhibitionMeta$ | async as meta">
+    <museum-exhibition-navigation (next)="nextExhibition()"
+                                  (prev)="prevExhibition()"></museum-exhibition-navigation>
+
+    <museum-information-leaflet (clicked)="displayDetails()"
+                                tabindex=0
+                                title="More information about this exhibition."></museum-information-leaflet>
+
+    <museum-exhibition-details @detailAnimation
+                               (exit)="closeDetails()"
+                               *ngIf="showDetails$ | async"></museum-exhibition-details>
+</ng-container>

@@ -32,4 +32,12 @@
         padding: 36px;
         margin-top: 36px;
     }
+
+    button.back{
+        display: block;
+
+        @include sm{
+            display: none;
+        }
+    }
 }

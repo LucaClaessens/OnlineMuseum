@@ -1,0 +1,44 @@
+.is-exhb-nav-area{
+    position: fixed;
+    width: 10%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    display: flex;
+    padding: 12px;
+    &.area-left{
+        left: 0;
+        justify-content: flex-start;
+        cursor: w-resize;
+    }
+    &.area-right{
+        right: 0;
+        justify-content: flex-end;
+        cursor: e-resize;
+    }
+    &:hover > .is-exhb-nav{
+        transform: translateX(0);
+    }
+}
+
+.is-exhb-nav{
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: white;
+    transition: transform .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    &.is-nav-right{
+        transform: translateX(18px);
+        &:after{
+            content: ">"
+        }
+    }
+    &.is-nav-left{
+        &:after{
+            content: "<"
+        }
+        transform: translateX(-18px);
+    }
+}

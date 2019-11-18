@@ -6,6 +6,7 @@ import { EntranceComponent } from './entrance/entrance.component';
 const routes: Routes = [
   { path: 'entrance', component: EntranceComponent },
   { path: 'exhibition', loadChildren: () => import('./exhibition/exhibition.module').then(m => m.ExhibitionModule) },
+  { path: 'info', loadChildren: () => import('./info/info.module').then(m => m.InfoModule) },
   { path: '', redirectTo: 'entrance', pathMatch: 'full' }
 ];
 
