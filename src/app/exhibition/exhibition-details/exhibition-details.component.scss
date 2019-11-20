@@ -9,7 +9,7 @@
     justify-content: center;
 }
 .background{
-    background-color: rgba(0,0,0,0.7);
+    background-color: #141414;
     position: absolute;
     top: 0;
     right: 0;
@@ -28,12 +28,6 @@
     color: #333;
     display: flex;
     flex-direction: column;
-
-    @include sm{
-        max-width: 700px;
-        padding: 36px;
-        margin-top: 36px;
-    }
 
     .content{
         flex-grow: 1;

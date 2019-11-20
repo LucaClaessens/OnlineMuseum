@@ -1,6 +1,6 @@
 <ul class="nav-menu"
     @navBarAnimation
-    *ngIf="!(navCollapsed$ | async) || navigationActive">
+    *ngIf="navigationActive">
        <li><a routerLink="/info"
                  routerLinkActive="active">Info</a></li>
        <li><a routerLink="/agenda"
@@ -11,8 +11,7 @@
                  routerLinkActive="active">About</a></li>
 </ul>
 
-<div class="nav-control"
-     [class.visible]="navCollapsed$ | async">
+<div class="nav-control visible">
        <button class="hamburger hamburger--spin-r"
                [class.is-active]="navigationActive"
                (click)="navToggleClicked()"

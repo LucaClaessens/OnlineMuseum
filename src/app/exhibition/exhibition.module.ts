@@ -5,12 +5,14 @@ import { ExhibitionRoutingModule } from './exhibition-routing.module';
 import { SharedModule } from '../_shared/shared.module';
 import { ExhibitionDetailsComponent } from './exhibition-details/exhibition-details.component';
 import { ExhibitionNavigationComponent } from './exhibition-navigation/exhibition-navigation.component';
+import { TooltipModule } from 'ng2-tooltip-directive';
 
 
 
 @NgModule({
   declarations: [ExhibitionComponent, ExhibitionDetailsComponent, ExhibitionNavigationComponent],
   imports: [
+    TooltipModule,
     CommonModule,
     ExhibitionRoutingModule,
     SharedModule

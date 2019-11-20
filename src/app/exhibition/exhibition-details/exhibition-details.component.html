@@ -11,12 +11,10 @@
 
     <div class="head">
         <h2>Title of exhibition</h2>
-        <hr>
     </div>
     <section class="content">
         <div class="text"
              *ngIf="focus === 'text'">
-            <h3>Title of exhibition</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae at natus minus sed labore. Illo quae, ut exercitationem
                 vitae atque nobis blanditiis ipsam quo, officiis hic, voluptatibus unde vel reiciendis.</p>
         </div>
@@ -29,6 +27,9 @@
     </section>
     <div class="controls">
         <span class="icon text"
+              tooltip="Exhibition text"
+              placement="top"
+              show-delay="500"
               [class.is-active]="focus === 'text'"
               (click)="setFocus('text')">
             <svg aria-hidden="true"
@@ -45,6 +46,9 @@
             </svg>
         </span>
         <span class="icon objects"
+              tooltip="Object list"
+              placement="top"
+              show-delay="500"
               [class.is-active]="focus === 'objects'"
               (click)="setFocus('objects')">
             <svg aria-hidden="true"

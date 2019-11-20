@@ -10,14 +10,14 @@ export const fadeValueChange = trigger('fadeValueChange', [
 export const detailAnimation = trigger('detailAnimation', [
     transition(':enter', [
         query('.paper', [
-            style({ opacity: 0, transform: 'translateY(250px)' }),
-            animate('.2s', style({ opacity: 1, transform: 'translateY(0px)' }))
+            style({ opacity: 0, transform: 'translateX(500px)' }),
+            animate('.2s', style({ opacity: 1, transform: 'translateX(0px)' }))
         ])
     ]),
     transition(':leave', [
         query('.paper', [
-            style({ opacity: 1, transform: 'translateY(0px)' }),
-            animate('.2s', style({ opacity: 0, transform: 'translateY(250px)' }))
+            style({ opacity: 1, transform: 'translateX(0px)' }),
+            animate('.2s', style({ opacity: 0, transform: 'translateX(500px)' }))
         ])
     ])
 ]);
