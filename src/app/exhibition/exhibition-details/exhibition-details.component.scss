@@ -26,6 +26,8 @@
     height: 100%;
     padding: 24px;
     color: #333;
+    display: flex;
+    flex-direction: column;
 
     @include sm{
         max-width: 700px;
@@ -33,11 +35,37 @@
         margin-top: 36px;
     }
 
+    .content{
+        flex-grow: 1;
+    }
+
     button.back{
         display: block;
 
         @include sm{
             display: none;
+        }
+    }
+    .controls{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 0;
+        align-self: flex-end;
+        span{
+            height: 30px;
+            width: 30px;
+            margin-right: 20px;
+            opacity: .5;
+            transition: opacity .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+            &.is-active{
+                opacity: 1;
+            }
+            cursor: pointer;
+            svg{
+                object-fit: contain;
+                height: 100%;
+            }
         }
     }
 }

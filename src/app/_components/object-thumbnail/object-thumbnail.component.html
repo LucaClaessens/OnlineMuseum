@@ -1,0 +1,11 @@
+<img [src]="src"
+     [@loadAnimation]='imageLoaded ? true : false'
+     (load)="onImageLoad($event)"
+     [alt]="alt">
+
+<ng-container @growAnimation
+              *ngIf="!imageLoaded">
+    <span class="loader">
+        <div class="circle"></div>
+    </span>
+</ng-container>

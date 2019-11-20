@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, Params } from '@angular/router';
 import { tap, map, flatMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { ExhibitionService } from '../_services/exhibition/exhibition.service';
@@ -17,8 +17,8 @@ export class ExhibitionComponent implements OnInit {
   exhibitionMeta$: Observable<string>;
   showDetails$: Observable<boolean>;
 
-  private setRouterState(idx, showDetails) {
-    return this.router.navigate(['exhibition', idx, showDetails]);
+  private setRouterState(idx, details, focus = 'text') {
+    return this.router.navigate(['exhibition', idx], { queryParams: { details, focus } });
   }
 
   nextExhibition() {
@@ -34,7 +34,7 @@ export class ExhibitionComponent implements OnInit {
   }
 
   closeDetails() {
-    return this.setRouterState(this.exhibitionService.currentExhibitionIdx, false);
+    return this.setRouterState(this.exhibitionService.currentExhibitionIdx, false, null);
   }
 
   constructor(
@@ -59,8 +59,8 @@ export class ExhibitionComponent implements OnInit {
       flatMap(id => this.exhibitionService.loadExhibition(Number(id)))
     );
 
-    this.showDetails$ = this.route.paramMap.pipe(
-      map((params: ParamMap) => params.get('showDetails')),
+    this.showDetails$ = this.route.queryParams.pipe(
+      map((params: Params) => params['details']),
       map(details => JSON.parse(details) === true)
     );
   }
