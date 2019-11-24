@@ -132,6 +132,10 @@
               "devServerTarget": "Online-Museum:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

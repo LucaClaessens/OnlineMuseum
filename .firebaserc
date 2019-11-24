@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "online-museum": {
+      "hosting": {
+        "Online-Museum": [
+          "online-museum"
+        ]
+      }
+    }
+  }
+}
