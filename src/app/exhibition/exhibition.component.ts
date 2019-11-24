@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router, Params } from '@angular/router';
-import { tap, map, flatMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { tap, map, flatMap, take } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 import { ExhibitionService } from '../_services/exhibition/exhibition.service';
 import { fadeValueChange, detailAnimation } from './exhibition.animations';
 
@@ -13,9 +13,17 @@ import { fadeValueChange, detailAnimation } from './exhibition.animations';
 })
 export class ExhibitionComponent implements OnInit {
 
+  showNavSource = new Subject();
+
   exhibitionId$: Observable<string>;
-  exhibitionMeta$: Observable<string>;
+  exhibitionMeta$: Observable<{ title: string, description: string }>;
   showDetails$: Observable<boolean>;
+  showNav$ = this.showNavSource.asObservable();
+
+
+  toggleNav(state) {
+    this.showNavSource.next(state);
+  }
 
   private setRouterState(idx, queryParams: Params = {}) {
     return this.router.navigate(['exhibition', idx], { queryParams, queryParamsHandling: 'merge' });
@@ -29,8 +37,9 @@ export class ExhibitionComponent implements OnInit {
     return this.setRouterState(this.exhibitionService.getPrevIdx());
   }
 
-  toggleDetails(state) {
-    return state ? this.displayDetails() : this.closeDetails();
+  async toggleDetails(_e: MouseEvent) {
+    const active = await this.showDetails$.pipe(take(1)).toPromise();
+    return active ? this.closeDetails() : this.displayDetails();
   }
 
   displayDetails() {
@@ -64,8 +73,10 @@ export class ExhibitionComponent implements OnInit {
     );
 
     this.showDetails$ = this.route.queryParams.pipe(
-      map((params: Params) => params.details),
-      map(details => JSON.parse(details) === true)
+      map((params: Params) => {
+        const active = params.details !== undefined ? JSON.parse(params.details) : false;
+        return active;
+      })
     );
   }
 

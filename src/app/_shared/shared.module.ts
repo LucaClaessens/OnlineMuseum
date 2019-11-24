@@ -4,6 +4,8 @@ import { InformationLeafletComponent } from '../_components/information-leaflet/
 import { IfChangesDirective } from '../_directives/if-changes.directive';
 import { ObjectThumbnailComponent } from '../_components/object-thumbnail/object-thumbnail.component';
 import { NavigationComponent } from '../_components/navigation/navigation.component';
+import { AnchorButtonComponent } from '../_components/anchor-button/anchor-button.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,15 +14,18 @@ import { NavigationComponent } from '../_components/navigation/navigation.compon
     InformationLeafletComponent,
     ObjectThumbnailComponent,
     IfChangesDirective,
-    NavigationComponent
+    NavigationComponent,
+    AnchorButtonComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     NavigationComponent,
     InformationLeafletComponent,
     ObjectThumbnailComponent,
+    AnchorButtonComponent,
     IfChangesDirective
   ]
 })

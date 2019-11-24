@@ -1,24 +1,24 @@
-<museum-navigation (toggle)="toggleDetails($event)"
-                   [navigationActive]="showDetails$ | async"></museum-navigation>
-
-
 <div class="exhibition-view">
     <ng-container *ngIf="exhibitionId$ | async as id">
         <h1 *ifChanges="id"
             [@fadeValueChange]>Exhibition {{ id }}</h1>
     </ng-container>
 
+    <nav class="headernav">
+        <museum-anchor-button>
+            <museum-navigation [navigationActive]="showNav$ | async"
+                               (toggle)="toggleNav($event)"></museum-navigation>
+        </museum-anchor-button>
+        <museum-anchor-button (click)="toggleDetails($event)">
+            i
+        </museum-anchor-button>
+    </nav>
     <museum-exhibition-navigation (next)="nextExhibition()"
                                   (prev)="prevExhibition()"></museum-exhibition-navigation>
 </div>
 <ng-container *ngIf="exhibitionMeta$ | async as meta">
     <museum-exhibition-details @detailAnimation
+                               [data$]="exhibitionMeta$"
                                (exit)="closeDetails()"
                                *ngIf="showDetails$ | async"></museum-exhibition-details>
 </ng-container>
-
-
-
-<museum-information-leaflet (clicked)="displayDetails()"
-                            tabindex=0
-                            title="More information about this exhibition."></museum-information-leaflet>

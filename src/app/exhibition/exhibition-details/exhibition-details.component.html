@@ -9,22 +9,27 @@
         &larr;
     </button>
 
-    <div class="head">
-        <h2>Title of exhibition</h2>
-    </div>
-    <section class="content">
-        <div class="text"
-             *ngIf="focus === 'text'">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae at natus minus sed labore. Illo quae, ut exercitationem
-                vitae atque nobis blanditiis ipsam quo, officiis hic, voluptatibus unde vel reiciendis.</p>
+    <ng-container *ngIf="data$ | async as data">
+        <div class="head">
+            <h2>{{data.title}}</h2>
         </div>
+        <section class="content">
+            <div class="text"
+                 *ngIf="focus === 'text'">
+                <p>{{data.description}}</p>
+            </div>
 
-        <div class="objects"
-             *ngIf="focus === 'objects'">
-            <museum-object-thumbnail></museum-object-thumbnail>
-            <museum-object-thumbnail></museum-object-thumbnail>
-        </div>
-    </section>
+            <div class="objects"
+                 *ngIf="focus === 'objects'">
+                <museum-object-thumbnail></museum-object-thumbnail>
+                <museum-object-thumbnail></museum-object-thumbnail>
+                <museum-object-thumbnail></museum-object-thumbnail>
+                <museum-object-thumbnail></museum-object-thumbnail>
+                <museum-object-thumbnail></museum-object-thumbnail>
+                <museum-object-thumbnail></museum-object-thumbnail>
+            </div>
+        </section>
+    </ng-container>
     <div class="controls">
         <span class="icon text"
               tooltip="Exhibition text"
