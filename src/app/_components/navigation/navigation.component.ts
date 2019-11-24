@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { navBarAnimation } from './navigation.animations';
 
 @Component({
@@ -12,11 +10,12 @@ import { navBarAnimation } from './navigation.animations';
 })
 export class NavigationComponent implements OnInit {
 
-  navCollapsed$: Observable<boolean>;
-  navigationActive = false;
+  @Output() toggle = new EventEmitter();
+  @Input() navigationActive = false;
 
   navToggleClicked() {
     this.navigationActive = !this.navigationActive;
+    this.toggle.emit(this.navigationActive);
   }
 
   constructor(
@@ -24,12 +23,6 @@ export class NavigationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-    this.navCollapsed$ = this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd),
-      map(() => this.router.url.includes('exhibition'))
-    );
-
   }
 
 }

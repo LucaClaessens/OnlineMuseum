@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "Online-Museum",
+      "public": "dist/Online-Museum",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router, Params } from '@angular/router';
-import { tap, map, flatMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { tap, map, flatMap, take } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 import { ExhibitionService } from '../_services/exhibition/exhibition.service';
 import { fadeValueChange, detailAnimation } from './exhibition.animations';
 
@@ -13,28 +13,41 @@ import { fadeValueChange, detailAnimation } from './exhibition.animations';
 })
 export class ExhibitionComponent implements OnInit {
 
-  exhibitionId$: Observable<string>;
-  exhibitionMeta$: Observable<string>;
-  showDetails$: Observable<boolean>;
+  showNavSource = new Subject();
 
-  private setRouterState(idx, details, focus = 'text') {
-    return this.router.navigate(['exhibition', idx], { queryParams: { details, focus } });
+  exhibitionId$: Observable<string>;
+  exhibitionMeta$: Observable<{ title: string, description: string }>;
+  showDetails$: Observable<boolean>;
+  showNav$ = this.showNavSource.asObservable();
+
+
+  toggleNav(state) {
+    this.showNavSource.next(state);
+  }
+
+  private setRouterState(idx, queryParams: Params = {}) {
+    return this.router.navigate(['exhibition', idx], { queryParams, queryParamsHandling: 'merge' });
   }
 
   nextExhibition() {
-    return this.setRouterState(this.exhibitionService.getNextIdx(), false);
+    return this.setRouterState(this.exhibitionService.getNextIdx());
   }
 
   prevExhibition() {
-    return this.setRouterState(this.exhibitionService.getPrevIdx(), false);
+    return this.setRouterState(this.exhibitionService.getPrevIdx());
+  }
+
+  async toggleDetails(_e: MouseEvent) {
+    const active = await this.showDetails$.pipe(take(1)).toPromise();
+    return active ? this.closeDetails() : this.displayDetails();
   }
 
   displayDetails() {
-    return this.setRouterState(this.exhibitionService.currentExhibitionIdx, true);
+    return this.setRouterState(this.exhibitionService.currentExhibitionIdx, { details: true });
   }
 
   closeDetails() {
-    return this.setRouterState(this.exhibitionService.currentExhibitionIdx, false, null);
+    return this.setRouterState(this.exhibitionService.currentExhibitionIdx, { details: false });
   }
 
   constructor(
@@ -50,7 +63,7 @@ export class ExhibitionComponent implements OnInit {
       tap(id => {
         if (id === 'current') {
           const idx = this.exhibitionService.latestExhibitionIdx;
-          return this.setRouterState(idx, false);
+          return this.setRouterState(idx, { details: false });
         }
       })
     );
@@ -60,8 +73,10 @@ export class ExhibitionComponent implements OnInit {
     );
 
     this.showDetails$ = this.route.queryParams.pipe(
-      map((params: Params) => params['details']),
-      map(details => JSON.parse(details) === true)
+      map((params: Params) => {
+        const active = params.details !== undefined ? JSON.parse(params.details) : false;
+        return active;
+      })
     );
   }
 

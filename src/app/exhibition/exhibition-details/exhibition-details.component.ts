@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { pluck, map } from 'rxjs/operators';
@@ -11,6 +11,8 @@ import { pluck, map } from 'rxjs/operators';
 export class ExhibitionDetailsComponent implements OnInit {
 
   @Output() exit = new EventEmitter();
+  @Input() data$: Observable<{ text: string, description: string }>;
+
   focus$: Observable<string>;
 
   closeDetails() {

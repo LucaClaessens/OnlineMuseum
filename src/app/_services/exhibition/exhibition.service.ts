@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +14,18 @@ export class ExhibitionService {
     return 15;
   }
 
-  private fetchExhibition = (idx: number) => {
-    return 'some great text!';
+  private fetchExhibition = (idx: number): { title: string, description: string } => {
+    return {
+      title: `${idx}: the title!`,
+      description: `some beautiful text`
+    };
   }
 
   // --- PUBLIC FUNCTIONS ---
 
   loadExhibition(idx) {
     this.currentExhibitionIdx = idx;
-    return this.fetchExhibition(idx);
+    return of(this.fetchExhibition(idx));
   }
 
   getNextIdx() {
