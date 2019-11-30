@@ -1,7 +1,7 @@
 @import 'breakpoints';
 
 :host{
-    color: white;
+    color: rgb(255,255,242);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,44 +15,34 @@
     font-weight: 200;
     letter-spacing: 0.8px;
     line-height: 100px;
-}
-span.char {
-    font-family: 'Prata', serif;
+    text-shadow: 0 0 10px rgb(255,255,242), 0 0 20px rgb(255,255,242);
+    font-weight: 300;
 }
 
-.enter-exhibition{
+nav{
+    display: flex;
+    flex-direction: column;
     position: absolute;
     bottom: 0;
-    right: 0;
+    left: 16px;
+    right: 16px;
+    z-index: 2;
+    .nav-level{
+        display: flex;
+        museum-content-tab{
+            flex: 1;
+        }
+    }
+}
+
+.nav-bot-top-row{
+    transform: translateY(40px);
+}
+
+museum-exhibition-banner{
+    position: absolute;
+    top: 0;
+    bottom: 0;
     left: 0;
-    display: flex;
-    justify-content: flex-end;
-    padding: 32px;
-
-    @include sm {
-        padding: 32px 64px;
-    }
-
-    button{
-        padding: 16px 32px;
-        background-color: white;
-        color: #333;
-        font-size: 16px;
-        padding-right: 48px;
-        cursor: pointer;
-        border-radius: 16px;
-        transition: background-color .3s cubic-bezier(0.075, 0.82, 0.165, 1);
-        &::after{
-            content: '→';
-            font-size: 16px;
-            position: relative;
-            right: -16px;
-        }
-        &:hover{
-            background-color: #ccc;
-        }
-        &:active{
-            background-color: #ccc;
-        }
-    }
+    right: 0;
 }

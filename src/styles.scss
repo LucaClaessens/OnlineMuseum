@@ -7,21 +7,19 @@ html,body{
     width: 100%;
     height: 100%;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
     overflow: hidden;
     position: relative;
+    font-family: 'Helvetica', sans-serif;
+    background-color: black;
+}
+
+body{
+    max-width: 1440px;
 }
 
 ul{
     list-style-type: none;
-}
-
-h1,h2,h3,h4,h5,h6{
-    font-family: 'Prata', serif;
-}
-
-p,span{
-    font-family: 'Roboto Mono', monospace;
 }
 
 a{
