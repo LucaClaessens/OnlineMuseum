@@ -1,12 +1,12 @@
 @import 'breakpoints';
 @import 'variables'; 
 
-@mixin tab-row($bottom: 0px, $zindex: 1){
+@mixin tab-row($bottom: 0px, $zindex: 1, $right: 16px){
     z-index: $zindex;
     position: absolute;
     bottom: $bottom;
     left: 16px;
-    right: 16px;
+    right: $right;
 }
 
 :host{
@@ -43,7 +43,7 @@ nav{
 }
 
 .nav-bot-bot-row{
-    @include tab-row(-40px, 2);
+    @include tab-row(-40px, 2, calc(5px + (100% * (1/3))));
 }
 
 museum-exhibition-banner{

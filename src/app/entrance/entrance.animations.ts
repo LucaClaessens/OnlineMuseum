@@ -2,7 +2,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 
 export const sideSlide = trigger('sideSlide', [
     state('hidden', style({
-        opacity: 0.5,
+        opacity: 0.95,
         transform: 'translateX(-100vw)'
     })),
     state('visible', style({
