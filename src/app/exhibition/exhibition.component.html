@@ -3,16 +3,6 @@
         <h1 *ifChanges="id"
             [@fadeValueChange]>Exhibition {{ id }}</h1>
     </ng-container>
-
-    <nav class="headernav">
-        <museum-anchor-button>
-            <museum-navigation [navigationActive]="showNav$ | async"
-                               (toggle)="toggleNav($event)"></museum-navigation>
-        </museum-anchor-button>
-        <museum-anchor-button (click)="toggleDetails($event)">
-            i
-        </museum-anchor-button>
-    </nav>
     <museum-exhibition-navigation (next)="nextExhibition()"
                                   (prev)="prevExhibition()"></museum-exhibition-navigation>
 </div>

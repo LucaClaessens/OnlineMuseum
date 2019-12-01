@@ -1,4 +1,13 @@
 @import 'breakpoints';
+@import 'variables'; 
+
+@mixin tab-row($bottom: 0px, $zindex: 1){
+    z-index: $zindex;
+    position: absolute;
+    bottom: $bottom;
+    left: 16px;
+    right: 16px;
+}
 
 :host{
     color: rgb(255,255,242);
@@ -10,25 +19,19 @@
 }
 
 .word{
+    @include text-glow;
     text-align: center;
     font-size: 60px;
     font-weight: 200;
     letter-spacing: 0.8px;
     line-height: 100px;
-    text-shadow: 0 0 10px rgb(255,255,242), 0 0 20px rgb(255,255,242);
     font-weight: 300;
 }
 
 nav{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    bottom: 0;
-    left: 16px;
-    right: 16px;
-    z-index: 2;
     .nav-level{
         display: flex;
+        flex-direction: row;
         museum-content-tab{
             flex: 1;
         }
@@ -36,13 +39,14 @@ nav{
 }
 
 .nav-bot-top-row{
-    transform: translateY(40px);
+    @include tab-row(0px, 1);
+}
+
+.nav-bot-bot-row{
+    @include tab-row(-40px, 2);
 }
 
 museum-exhibition-banner{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    @include absolute-cover(1);
+
 }

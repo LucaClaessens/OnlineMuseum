@@ -1,19 +1,21 @@
+@import "variables";
+
 :host{
     background-color: black;
-    border: 1px solid rgb(255,255,242);
-    color: rgb(255,255,242);
+    border: 1px solid $offwhite;
+    color: $offwhite;
     border-bottom: none;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     padding: 5px 15px 55px;
     font-size: 16px;
     font-weight: 300;
-    transform: translateY(50px);
+    transform: translateY(0px);
     transition: transform .3s cubic-bezier(0.165, 0.84, 0.44, 1);
     cursor: pointer;
     &:hover{
-        color: rgb(0,255,0);
-        transform: translateY(35px);
+        color: $green;
+        transform: translateY(-35px);
         opacity: 1;
     }
 }

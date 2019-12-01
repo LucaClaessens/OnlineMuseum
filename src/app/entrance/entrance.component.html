@@ -1,4 +1,5 @@
-<section id="entrance-animation">
+<section id="entrance-animation"
+         (click)="startExhibitionSequence()">
     <div class="word">
         <span class="char">O</span>
         <span class="char">N</span>
@@ -17,7 +18,7 @@
     </div>
 </section>
 
-<museum-exhibition-banner></museum-exhibition-banner>
+<museum-exhibition-banner [@sideSlide]="showBanner ? 'visible' : 'hidden'"></museum-exhibition-banner>
 
 <nav>
     <div class="nav-level nav-bot-top-row">
