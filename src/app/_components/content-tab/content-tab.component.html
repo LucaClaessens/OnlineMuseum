@@ -1,1 +1,12 @@
-<div class="title">{{title}}</div>
+<div class="header"
+     (click)="toggle()"
+     [class.focused]="focused">
+    <div class="title">{{title}}</div>
+    <div class="close"
+         *ngIf="focused">&#x2935;</div>
+</div>
+
+<article class="content"
+         *ngIf="focused">
+    <ng-content></ng-content>
+</article>

@@ -14,8 +14,25 @@
     transition: transform .3s cubic-bezier(0.165, 0.84, 0.44, 1);
     cursor: pointer;
     &:hover{
-        color: $green;
         transform: translateY(-10px);
-        opacity: 1;
     }
+    &:hover > .header:not(.focused){
+        color: $green;
+    }
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+}
+
+.header.focused:hover > .close {
+    color: $green;
+}
+
+.content{
+    padding: 0 16px;
+    max-height: 700px;
+    overflow-y: auto;
 }

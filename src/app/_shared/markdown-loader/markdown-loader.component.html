@@ -1,0 +1,22 @@
+<markdown *ngIf="fetch"
+          [src]="src"
+          (load)="onLoad($event)"
+          (error)="onError($event)"></markdown>
+
+<div class="loader"
+     *ngIf="preload">
+    <div class="lds-spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>

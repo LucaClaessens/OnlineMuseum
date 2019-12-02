@@ -23,12 +23,26 @@
 <nav>
     <div class="nav-level nav-bot-top-row">
         <museum-content-tab title="About Online Museum"
-                            activatedRoute="about"></museum-content-tab>
+                            (initialFocus)="about.fetchMarkdown()">
+            <museum-markdown-loader [src]="'assets/md/about.md'"
+                                    #about></museum-markdown-loader>
+        </museum-content-tab>
         <museum-content-tab title="Research and archive"
-                            activatedRoute="research"></museum-content-tab>
+                            (initialFocus)="research.fetchMarkdown()">
+            <museum-markdown-loader [src]="'assets/md/research.md'"
+                                    #research></museum-markdown-loader>
+        </museum-content-tab>
     </div>
     <div class="nav-level nav-bot-bot-row">
-        <museum-content-tab title="Contributors"></museum-content-tab>
-        <museum-content-tab title="Contact"></museum-content-tab>
+        <museum-content-tab title="Contributors"
+                            (initialFocus)="contributors.fetchMarkdown()">
+            <museum-markdown-loader [src]="'assets/md/contributors.md'"
+                                    #contributors></museum-markdown-loader>
+        </museum-content-tab>
+        <museum-content-tab title="Contact"
+                            (initialFocus)="contact.fetchMarkdown()">
+            <museum-markdown-loader [src]="'assets/md/contact.md'"
+                                    #contact></museum-markdown-loader>
+        </museum-content-tab>
     </div>
 </nav>

@@ -16,7 +16,7 @@ export class ExhibitionComponent implements OnInit {
   showNavSource = new Subject();
 
   exhibitionId$: Observable<string>;
-  exhibitionMeta$: Observable<{ title: string, description: string }>;
+  exhibitionMeta$: Observable<ExhibitionMetadata>;
   showDetails$: Observable<boolean>;
   showNav$ = this.showNavSource.asObservable();
 

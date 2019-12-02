@@ -11,5 +11,5 @@ museum-content-tab{
     z-index: 2;
     width: calc((100% - 32px) / 3);
     right: 16px;
-    bottom: -40px;
+    top: calc(100vh - 40px);
 }

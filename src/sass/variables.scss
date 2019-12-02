@@ -36,3 +36,11 @@ $font-weight-bold: 700;
     margin-top: 0px;
     margin-bottom: 0px;
 }
+
+@mixin tab-row($top: calc(100vh - 40px), $zindex: 1, $right: 16px){
+    z-index: $zindex;
+    position: absolute;
+    top: $top;
+    left: 16px;
+    right: $right;
+}
