@@ -1,4 +1,5 @@
-<section id="entrance-animation">
+<section id="entrance-animation"
+         (click)="startExhibitionSequence()">
     <div class="word">
         <span class="char">O</span>
         <span class="char">N</span>
@@ -17,6 +18,31 @@
     </div>
 </section>
 
-<div class="enter-exhibition">
-    <a routerLink="/exhibition"><button>Enter exhibition</button></a>
-</div>
+<museum-exhibition-banner [@sideSlide]="showBanner ? 'visible' : 'hidden'"></museum-exhibition-banner>
+
+<nav>
+    <div class="nav-level nav-bot-top-row">
+        <museum-content-tab title="About Online Museum"
+                            (initialFocus)="about.fetchMarkdown()">
+            <museum-markdown-loader [src]="'assets/md/about.md'"
+                                    #about></museum-markdown-loader>
+        </museum-content-tab>
+        <museum-content-tab title="Research and archive"
+                            (initialFocus)="research.fetchMarkdown()">
+            <museum-markdown-loader [src]="'assets/md/research.md'"
+                                    #research></museum-markdown-loader>
+        </museum-content-tab>
+    </div>
+    <div class="nav-level nav-bot-bot-row">
+        <museum-content-tab title="Contributors"
+                            (initialFocus)="contributors.fetchMarkdown()">
+            <museum-markdown-loader [src]="'assets/md/contributors.md'"
+                                    #contributors></museum-markdown-loader>
+        </museum-content-tab>
+        <museum-content-tab title="Contact"
+                            (initialFocus)="contact.fetchMarkdown()">
+            <museum-markdown-loader [src]="'assets/md/contact.md'"
+                                    #contact></museum-markdown-loader>
+        </museum-content-tab>
+    </div>
+</nav>

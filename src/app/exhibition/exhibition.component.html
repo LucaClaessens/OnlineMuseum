@@ -1,24 +1,19 @@
-<div class="exhibition-view">
-    <ng-container *ngIf="exhibitionId$ | async as id">
-        <h1 *ifChanges="id"
-            [@fadeValueChange]>Exhibition {{ id }}</h1>
-    </ng-container>
-
-    <nav class="headernav">
-        <museum-anchor-button>
-            <museum-navigation [navigationActive]="showNav$ | async"
-                               (toggle)="toggleNav($event)"></museum-navigation>
-        </museum-anchor-button>
-        <museum-anchor-button (click)="toggleDetails($event)">
-            i
-        </museum-anchor-button>
-    </nav>
-    <museum-exhibition-navigation (next)="nextExhibition()"
-                                  (prev)="prevExhibition()"></museum-exhibition-navigation>
+<div class="exhibition-view"
+     *ngIf="exhibitionId$ | async as id">
+    <!-- <museum-exhibition-navigation (next)="nextExhibition()"
+                                  (prev)="prevExhibition()"></museum-exhibition-navigation> -->
+    <iframe src="https://sevenclicks.org/?id=0&p0=Still_life&mute=0"
+            frameborder="0"></iframe>
 </div>
-<ng-container *ngIf="exhibitionMeta$ | async as meta">
-    <museum-exhibition-details @detailAnimation
-                               [data$]="exhibitionMeta$"
-                               (exit)="closeDetails()"
-                               *ngIf="showDetails$ | async"></museum-exhibition-details>
-</ng-container>
+
+<nav>
+    <div class="nav-level nav-bot-top-row">
+        <museum-content-tab title="About Exhibition">
+            <museum-exhibition-about [data$]='exhibitionMeta$'>
+            </museum-exhibition-about>
+        </museum-content-tab>
+        <museum-content-tab title="Object list">
+            <museum-exhibition-object-list></museum-exhibition-object-list>
+        </museum-content-tab>
+    </div>
+</nav>

@@ -1,8 +1,15 @@
 :host{
-    background-color: rgb(20,20,20);
+    background-color: black;
     height: 100%;
     width: 100%;
-    text-rendering: optimizeLegibility;
     display: flex;
     flex-direction: column;
+}
+
+museum-content-tab{
+    position: absolute;
+    z-index: 2;
+    width: calc((100% - 32px) / 3);
+    right: 16px;
+    top: calc(100vh - 40px);
 }

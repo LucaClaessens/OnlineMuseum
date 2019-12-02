@@ -1,0 +1,73 @@
+@import "variables";
+
+$date-font-size: 100px;
+$headline-font-size: 80px;
+$subtitle-font-size: 55px;
+$dash-height: 3px;
+
+:host{
+    color: rgb(255,255,242);
+    font-weight: 300;
+    background-color: black;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 100px;
+}
+
+h1, h2{
+    @include text-margin-reset;
+}
+
+.title-box{
+    width: 676px;
+    .tagline-title{
+        @include text-glow;
+        h1{
+            font-size: $headline-font-size;
+            font-weight: 500;
+            span{
+                font-weight: $font-weight-lighter;
+            }
+    
+        }
+    }
+    
+    .tagline-subtitle{
+        h2{
+            font-size: $subtitle-font-size;
+            font-weight: 500;
+        }
+    }
+    
+    .date{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h1{
+            font-weight: $font-weight-lighter;
+            font-size: $date-font-size;
+        }
+        span.dash{
+            margin-left: 16px;
+            height: $dash-height;
+            background-color: $offwhite;
+            width: 100%;
+        }
+    }
+    
+    .title-underline{
+        margin-top: 50px;
+        height: $dash-height;
+        background-color: $offwhite;
+        width: 500px;
+    }
+    
+}
+a{
+    color: $green;
+    font-size: $subtitle-font-size;
+}

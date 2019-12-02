@@ -1,0 +1,38 @@
+@import "variables";
+
+:host{
+    background-color: black;
+    border: 1px solid $offwhite;
+    color: $offwhite;
+    border-bottom: none;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 5px 15px 55px;
+    font-size: 16px;
+    font-weight: 300;
+    transform: translateY(0px);
+    transition: transform .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+    &:hover{
+        transform: translateY(-10px);
+    }
+    &:hover > .header:not(.focused){
+        color: $green;
+    }
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+}
+
+.header.focused:hover > .close {
+    color: $green;
+}
+
+.content{
+    padding: 0 16px;
+    max-height: 700px;
+    overflow-y: auto;
+}

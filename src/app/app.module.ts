@@ -10,11 +10,13 @@ import { SharedModule } from './_shared/shared.module';
 import { AngularFireModule } from '@angular/fire';
 
 import { environment } from '../environments/environment';
+import { ExhibitionBannerComponent } from './_components/exhibition-banner/exhibition-banner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EntranceComponent,
+    ExhibitionBannerComponent
   ],
   imports: [
     BrowserModule,
