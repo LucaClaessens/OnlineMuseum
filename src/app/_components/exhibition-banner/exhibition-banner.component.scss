@@ -1,9 +1,13 @@
 @import "variables";
+@import "breakpoints";
 
-$date-font-size: 100px;
-$headline-font-size: 88px;
-$subtitle-font-size: 40px;
-$dash-height: 3px;
+$line-height: 88px;
+$line-height-sm: 42px;
+
+$font-size: 88px;
+$font-size-sm: 36px;
+
+$subtitle-font-size: 44px;
 
 :host{
     color: rgb(255,255,242);
@@ -26,14 +30,24 @@ h1, h2{
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 350px;
+    height: 150px;
+
+    @include md{
+        height: 350px;
+    }
     .tagline-title{
         @include text-glow;
         text-align: center;
         h1{
-            font-size: $headline-font-size;
+
+            font-size: $font-size-sm;
+            line-height: $line-height-sm;
+
+            @include md{
+                font-size: $font-size;
+                line-height: $line-height;
+            }
             font-weight: 500;
-            line-height: 88px;
             span{
                 font-weight: $font-weight-lighter;
             }
@@ -43,9 +57,14 @@ h1, h2{
     .tagline-subtitle{
         text-align: center;
         h2{
-            font-size: $headline-font-size;
+            font-size: $font-size-sm;
+            line-height: $line-height-sm;
+
+            @include md{
+                font-size: $font-size;
+                line-height: $line-height;
+            }
             font-weight: 500;
-            line-height: 88px;
             text-transform: uppercase;
         }
     }
