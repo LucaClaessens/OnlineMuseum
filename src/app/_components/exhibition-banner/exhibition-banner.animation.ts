@@ -1,25 +1,5 @@
 import { trigger, state, style, transition, animate, query } from '@angular/animations';
 
-// export const fadeValueChange = trigger('fadeValueChange', [
-//     transition('void => *', [
-//         style({ opacity: 0, position: 'absolute', 'transform-origin': 'top center' }),
-//         animate('1.6s',
-//             style({ opacity: 0 })
-//         ),
-//         style({ opacity: 0, transform: 'rotateX(-90deg)', position: 'relative' }),
-//         animate('.3s cubic-bezier(0.215, 0.610, 0.355, 1)',
-//             style({ opacity: '1', transform: 'rotateX(0deg)' })
-//         )
-//     ]
-//     ),
-//     transition('* => void', [
-//         style({ opacity: 1, 'transform-origin': 'top center' }),
-//         animate('.3s',
-//             style({ opacity: 0, transform: 'rotateX(90deg)' }),
-//         )
-//     ])
-// ]);
-
 export const fadeValueChange = trigger('fadeValueChange', [
     transition('void => *', [
         style({ opacity: 0, position: 'absolute', 'transform-origin': 'center center' }),
