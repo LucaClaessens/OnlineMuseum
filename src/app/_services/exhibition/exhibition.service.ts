@@ -14,6 +14,7 @@ export class ExhibitionService {
     return 15;
   }
 
+  // TODO: make exhibition data based on firebase, enable navigation between exhibitions
   private fetchExhibition = (idx: number): ExhibitionMetadata => {
     return {
       description: `Almost everyone has a hoodie. You come across the hoodie on the street, on sports fields

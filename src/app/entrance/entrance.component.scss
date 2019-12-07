@@ -41,3 +41,25 @@ nav{
 museum-exhibition-banner{
     @include absolute-cover(1);
 }
+
+.hammer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    background-image: url('/assets/hammer.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    transform-origin: 90% 90%;
+    animation: 1s hammer infinite;
+}
+
+@keyframes hammer{
+    0% { transform: rotate(45deg)}
+    15% { transform: rotate(-38deg)}
+    17% { transform: rotate(-34deg)}
+    20% { transform: rotate(-35deg)}
+    100% { transform: rotate(45deg)}
+}
