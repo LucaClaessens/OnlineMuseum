@@ -1,8 +1,8 @@
 @import "variables";
 
 $date-font-size: 100px;
-$headline-font-size: 80px;
-$subtitle-font-size: 55px;
+$headline-font-size: 88px;
+$subtitle-font-size: 40px;
 $dash-height: 3px;
 
 :host{
@@ -23,51 +23,38 @@ h1, h2{
 }
 
 .title-box{
-    width: 676px;
+    margin-top: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     .tagline-title{
         @include text-glow;
+        text-align: center;
         h1{
             font-size: $headline-font-size;
             font-weight: 500;
+            line-height: 88px;
             span{
                 font-weight: $font-weight-lighter;
             }
-    
         }
     }
-    
+
     .tagline-subtitle{
+        text-align: center;
         h2{
-            font-size: $subtitle-font-size;
+            font-size: $headline-font-size;
             font-weight: 500;
+            line-height: 88px;
+            text-transform: uppercase;
         }
-    }
-    
-    .date{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        h1{
-            font-weight: $font-weight-lighter;
-            font-size: $date-font-size;
-        }
-        span.dash{
-            margin-left: 16px;
-            height: $dash-height;
-            background-color: $offwhite;
-            width: 100%;
-        }
-    }
-    
-    .title-underline{
-        margin-top: 50px;
-        height: $dash-height;
-        background-color: $offwhite;
-        width: 500px;
     }
     
 }
 a{
+    width: 100%;
+    text-align: center;
     color: $green;
     font-size: $subtitle-font-size;
 }
