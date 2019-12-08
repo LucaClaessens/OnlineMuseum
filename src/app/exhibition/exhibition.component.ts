@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router, Params } from '@angular/router';
-import { tap, map, flatMap, take } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+import { tap, map, flatMap, pluck } from 'rxjs/operators';
+import { Observable, Subject, combineLatest } from 'rxjs';
 import { ExhibitionService } from '../_services/exhibition/exhibition.service';
 import { fadeValueChange, detailAnimation } from './exhibition.animations';
 
@@ -15,39 +15,13 @@ export class ExhibitionComponent implements OnInit {
 
   showNavSource = new Subject();
 
-  exhibitionId$: Observable<string>;
-  exhibitionMeta$: Observable<ExhibitionMetadata>;
-  showDetails$: Observable<boolean>;
-  showNav$ = this.showNavSource.asObservable();
+  collectionId$: Observable<string>;
+  eidx$ = this.route.queryParams.pipe(pluck<any, string>('eidx'), map(e => Number(e)));
+  exhibitionMeta$: Observable<ExhibitionMetadata & { id: string }>;
 
 
-  toggleNav(state) {
-    this.showNavSource.next(state);
-  }
-
-  private setRouterState(idx, queryParams: Params = {}) {
-    return this.router.navigate(['exhibition', idx], { queryParams, queryParamsHandling: 'merge' });
-  }
-
-  nextExhibition() {
-    return this.setRouterState(this.exhibitionService.getNextIdx());
-  }
-
-  prevExhibition() {
-    return this.setRouterState(this.exhibitionService.getPrevIdx());
-  }
-
-  async toggleDetails(_e: MouseEvent) {
-    const active = await this.showDetails$.pipe(take(1)).toPromise();
-    return active ? this.closeDetails() : this.displayDetails();
-  }
-
-  displayDetails() {
-    return this.setRouterState(this.exhibitionService.currentExhibitionIdx, { details: true });
-  }
-
-  closeDetails() {
-    return this.setRouterState(this.exhibitionService.currentExhibitionIdx, { details: false });
+  private setRouterState(cid, queryParams: Params = {}) {
+    return this.router.navigate(['exhibition', cid], { queryParams, queryParamsHandling: 'merge' });
   }
 
   constructor(
@@ -58,26 +32,24 @@ export class ExhibitionComponent implements OnInit {
 
   ngOnInit() {
 
-    this.exhibitionId$ = this.route.paramMap.pipe(
-      map((params: ParamMap) => params.get('id')),
-      tap(id => {
+    this.collectionId$ = this.route.paramMap.pipe(
+      map((params: ParamMap) => params.get('collectionId')),
+      tap(async id => {
         if (id === 'current') {
-          const idx = this.exhibitionService.latestExhibitionIdx;
-          return this.setRouterState(idx, { details: false });
+          const latestCollection = await this.exhibitionService.preloadLatestCollection();
+          const cid = latestCollection.id;
+          return this.setRouterState(cid, { eidx: 0 });
         }
       })
     );
 
-    this.exhibitionMeta$ = this.exhibitionId$.pipe(
-      flatMap(id => this.exhibitionService.loadExhibition(Number(id)))
+    this.exhibitionMeta$ = combineLatest(
+      this.collectionId$,
+      this.eidx$
+    ).pipe(
+      flatMap(([cid, eidx]) => this.exhibitionService.fetchExhibition(cid, eidx))
     );
 
-    this.showDetails$ = this.route.queryParams.pipe(
-      map((params: Params) => {
-        const active = params.details !== undefined ? JSON.parse(params.details) : false;
-        return active;
-      })
-    );
   }
 
 }

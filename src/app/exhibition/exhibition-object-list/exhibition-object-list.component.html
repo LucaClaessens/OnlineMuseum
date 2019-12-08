@@ -1,1 +1,7 @@
-<p>exhibition-object-list works!</p>
+<ng-container *ngIf="imageData$ | async as images">
+    <div class="object"
+         *ngFor="let o of images">
+        <img [src]="o.image"
+             [alt]="o.name">
+    </div>
+</ng-container>

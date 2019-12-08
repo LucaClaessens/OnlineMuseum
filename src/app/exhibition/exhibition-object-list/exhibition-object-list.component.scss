@@ -1,0 +1,14 @@
+:host{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.object{
+    max-width: 200px;
+    padding: 16px;
+    img{
+        width: 100%;
+        z-index: 2;
+    }
+}
