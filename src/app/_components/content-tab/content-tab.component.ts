@@ -13,7 +13,7 @@ export class ContentTabComponent implements OnInit {
     return this.focused ? 'visible' : 'hidden';
   }
 
-  @Input() title = 'Tab title';
+  @Input() header = 'Tab title';
   @Input() focused = false;
 
   @Output() initialFocus = new EventEmitter();

@@ -1,7 +1,7 @@
 <router-outlet>
 </router-outlet>
 
-<museum-content-tab title="Floor plan"
+<museum-content-tab header="Floor plan"
                     #floorplan
                     (initialFocus)="loader.fetchMarkdown()">
     <museum-markdown-loader [src]="'assets/md/floorplan.md'"

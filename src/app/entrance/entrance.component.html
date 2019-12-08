@@ -27,24 +27,24 @@
 
 <nav>
     <div class="nav-level nav-bot-top-row">
-        <museum-content-tab title="About Online Museum"
+        <museum-content-tab header="About Online Museum"
                             (initialFocus)="about.fetchMarkdown()">
             <museum-markdown-loader [src]="'assets/md/about.md'"
                                     #about></museum-markdown-loader>
         </museum-content-tab>
-        <museum-content-tab title="Research and archive"
+        <museum-content-tab header="Research and archive"
                             (initialFocus)="research.fetchMarkdown()">
             <museum-markdown-loader [src]="'assets/md/research.md'"
                                     #research></museum-markdown-loader>
         </museum-content-tab>
     </div>
     <div class="nav-level nav-bot-bot-row">
-        <museum-content-tab title="Contributors"
+        <museum-content-tab header="Contributors"
                             (initialFocus)="contributors.fetchMarkdown()">
             <museum-markdown-loader [src]="'assets/md/contributors.md'"
                                     #contributors></museum-markdown-loader>
         </museum-content-tab>
-        <museum-content-tab title="Contact"
+        <museum-content-tab header="Contact"
                             (initialFocus)="contact.fetchMarkdown()">
             <museum-markdown-loader [src]="'assets/md/contact.md'"
                                     #contact></museum-markdown-loader>
