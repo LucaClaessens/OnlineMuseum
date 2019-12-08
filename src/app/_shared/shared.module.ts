@@ -8,6 +8,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MarkdownLoaderComponent } from './markdown-loader/markdown-loader.component';
 import { LoaderComponent } from './loader/loader.component';
+import { SafePipe } from './../_pipes/safe.pipe';
 
 
 
@@ -17,7 +18,8 @@ import { LoaderComponent } from './loader/loader.component';
     IfChangesDirective,
     ContentTabComponent,
     MarkdownLoaderComponent,
-    LoaderComponent
+    LoaderComponent,
+    SafePipe
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { LoaderComponent } from './loader/loader.component';
     ObjectThumbnailComponent,
     IfChangesDirective,
     ContentTabComponent,
-    MarkdownLoaderComponent
+    MarkdownLoaderComponent,
+    SafePipe
   ]
 })
 export class SharedModule { }
