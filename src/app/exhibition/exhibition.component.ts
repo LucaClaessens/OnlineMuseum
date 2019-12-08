@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router, Params } from '@angular/router';
-import { tap, map, flatMap, pluck } from 'rxjs/operators';
+import { tap, map, flatMap, pluck, filter } from 'rxjs/operators';
 import { Observable, Subject, combineLatest } from 'rxjs';
 import { ExhibitionService } from '../_services/exhibition/exhibition.service';
 import { fadeValueChange, detailAnimation } from './exhibition.animations';
@@ -44,7 +44,7 @@ export class ExhibitionComponent implements OnInit {
     );
 
     this.exhibitionMeta$ = combineLatest(
-      this.collectionId$,
+      this.collectionId$.pipe(filter(cid => cid !== 'current')),
       this.eidx$
     ).pipe(
       flatMap(([cid, eidx]) => this.exhibitionService.fetchExhibition(cid, eidx))

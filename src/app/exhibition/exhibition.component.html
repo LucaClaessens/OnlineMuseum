@@ -7,17 +7,17 @@
                     frameborder="0"></iframe>
             <div *ngSwitchDefault>We should load a {{metadata.loadId}} component.</div>
         </div>
-    </ng-container>
 
-    <nav>
-        <div class="nav-level nav-bot-top-row">
-            <museum-content-tab title="About Exhibition">
-                <museum-exhibition-about [data$]='exhibitionMeta$'>
-                </museum-exhibition-about>
-            </museum-content-tab>
-            <museum-content-tab title="Object list">
-                <museum-exhibition-object-list [data$]='exhibitionMeta$'></museum-exhibition-object-list>
-            </museum-content-tab>
-        </div>
-    </nav>
+        <nav>
+            <div class="nav-level nav-bot-top-row">
+                <museum-content-tab title="About Exhibition">
+                    <museum-exhibition-about [data$]='exhibitionMeta$'>
+                    </museum-exhibition-about>
+                </museum-content-tab>
+                <museum-content-tab title="Object list">
+                    <museum-exhibition-object-list [data$]='exhibitionMeta$'></museum-exhibition-object-list>
+                </museum-content-tab>
+            </div>
+        </nav>
+    </ng-container>
 </ng-container>
