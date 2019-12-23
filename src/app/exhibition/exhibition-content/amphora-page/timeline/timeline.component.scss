@@ -1,0 +1,37 @@
+:host{
+    flex: 1;
+    flex-basis: 0;
+    border-bottom: 1px solid black;
+    background-color: white;
+    color: #333;
+    transition: flex .3s cubic-bezier(0.19, 1, 0.22, 1);
+    position: relative;
+    white-space: nowrap;
+    min-height: 0;
+    &.focused{
+        flex: 4;
+        transition-delay: 0s;
+        museum-amphora-card{
+            padding: 32px;
+        }
+    }
+    &:last-child{
+        border-bottom: none;
+    }
+    museum-amphora-card{
+        padding: 8px;
+    }
+    .museum-identifier{
+        position: absolute;
+        padding: 8px;
+        top: 0;
+        left: 0;
+        font-size: 12px;
+    }
+    .year-timeline{
+        width: 500px;
+        display: inline-flex;
+        background-color: white;
+        height: 100%;
+    }
+}

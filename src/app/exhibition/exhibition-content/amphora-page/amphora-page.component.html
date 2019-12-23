@@ -1,0 +1,29 @@
+<section class="timeline">
+    <drag-scroll class="timeline-drag"
+                 [scrollbar-hidden]="true">
+        <div drag-scrollable-item
+             class="timeline-draggable-content">
+            <div class="timeline-header">
+                <div class="starter-spacer"></div>
+                <div class="time-indicator"
+                     *ngFor="let year of timeIndicators">
+                    {{ year | yearAge }}
+                </div>
+            </div>
+            <div class="timeline-content">
+                <museum-timeline museum="Rijksmuseum"
+                                 [trackId]=1
+                                 [timeline]="timeIndicators"></museum-timeline>
+                <museum-timeline museum="Metropolitan Museum of Art"
+                                 [trackId]=2
+                                 [timeline]="timeIndicators"></museum-timeline>
+                <museum-timeline museum="Victoria and albert museum"
+                                 [trackId]=3
+                                 [timeline]="timeIndicators"></museum-timeline>
+            </div>
+        </div>
+    </drag-scroll>
+    <div class="timeline-footer">
+        <span>Footer about things like 👋🏻</span>
+    </div>
+</section>

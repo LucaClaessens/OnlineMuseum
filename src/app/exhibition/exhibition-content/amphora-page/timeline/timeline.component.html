@@ -1,0 +1,13 @@
+<div class="museum-identifier">
+    {{museum}}
+</div>
+<div class="year-timeline"></div>
+<ng-container *ngIf="amphoraByYear$ | async as amphoraByYear">
+    <div class="year-timeline"
+         *ngFor="let year of timeline; let i = index;">
+        <ng-container *ngIf="amphoraByYear[i] as amphora;">
+            <museum-amphora-card [amphora]="amphora">
+            </museum-amphora-card>
+        </ng-container>
+    </div>
+</ng-container>

@@ -9,6 +9,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MarkdownLoaderComponent } from './markdown-loader/markdown-loader.component';
 import { LoaderComponent } from './loader/loader.component';
 import { SafePipe } from './../_pipes/safe.pipe';
+import { FloorplanComponent } from './floorplan/floorplan.component';
 
 
 
@@ -19,7 +20,8 @@ import { SafePipe } from './../_pipes/safe.pipe';
     ContentTabComponent,
     MarkdownLoaderComponent,
     LoaderComponent,
-    SafePipe
+    SafePipe,
+    FloorplanComponent
   ],
   imports: [
     CommonModule,
@@ -32,6 +34,7 @@ import { SafePipe } from './../_pipes/safe.pipe';
     IfChangesDirective,
     ContentTabComponent,
     MarkdownLoaderComponent,
+    FloorplanComponent,
     SafePipe
   ]
 })

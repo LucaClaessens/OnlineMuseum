@@ -1,0 +1,17 @@
+<div class="emoji"
+     (deferLoad)="hideEmoji = false">
+     <div class="foreground"
+          #foreground>
+          <img *ngIf="!hideEmoji"
+               @insertRemove
+               [src]="amphora.emojiImageUrl"
+               [alt]="amphora.name">
+     </div>
+     <div class="background"
+          #background>
+          <img *ngIf="showAmphora"
+               @insertRemove
+               [src]="amphora.amphoraImageUrl"
+               [alt]="amphora.name">
+     </div>
+</div>

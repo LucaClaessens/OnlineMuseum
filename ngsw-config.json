@@ -14,7 +14,8 @@
           "/*.js"
         ]
       }
-    }, {
+    },
+    {
       "name": "assets",
       "installMode": "lazy",
       "updateMode": "prefetch",
@@ -23,6 +24,19 @@
           "/assets/**",
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
+      }
+    },
+    {
+      "name": "video-assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "urls": [
+          "https://embedwistia-a.akamaihd.net/deliveries/c32680cec84aa97853969f0b5cedb41ddcaf2b80.m3u8/seg-1-v1-a1.ts",
+          "https://embedwistia-a.akamaihd.net/deliveries/a2ea87a66ade6af48fcf3e2b1193c9b4.webp?image_crop_resized=1280x653",
+          "https://fast.wistia.net/assets/external/wistia-mux.js",
+          "https://embedwistia-a.akamaihd.net/deliveries/c32680cec84aa97853969f0b5cedb41ddcaf2b80.m3u8?origin_v2=1"
+        ],
       }
     }
   ]
