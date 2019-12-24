@@ -1,15 +1,12 @@
 <div class="title-box">
-    <div class="date">
-        <h1 class='serif'>21.01.2020</h1>
-        <span class="dash"></span>
-    </div>
     <div class="tagline-title">
         <h1 class="glow">ONLINE <span class="serif">MUSEUM</span></h1>
     </div>
     <div class="tagline-subtitle">
-        <h2>STILL LIFE WITH :</h2>
+        <h2>STILL LIFE WITH</h2>
+        <h2 *ifChanges="exhibitionHeaderSubject"
+            [@fadeValueChange]>&lsquo;{{ exhibitionHeaderSubject }}&rsquo;</h2>
     </div>
-    <div class="title-underline"></div>
 </div>
 
 <a routerLink="/exhibition"

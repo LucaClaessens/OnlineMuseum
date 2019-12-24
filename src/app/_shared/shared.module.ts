@@ -7,6 +7,9 @@ import { ContentTabComponent } from '../_components/content-tab/content-tab.comp
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MarkdownLoaderComponent } from './markdown-loader/markdown-loader.component';
+import { LoaderComponent } from './loader/loader.component';
+import { SafePipe } from './../_pipes/safe.pipe';
+import { FloorplanComponent } from './floorplan/floorplan.component';
 
 
 
@@ -15,7 +18,10 @@ import { MarkdownLoaderComponent } from './markdown-loader/markdown-loader.compo
     ObjectThumbnailComponent,
     IfChangesDirective,
     ContentTabComponent,
-    MarkdownLoaderComponent
+    MarkdownLoaderComponent,
+    LoaderComponent,
+    SafePipe,
+    FloorplanComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +33,9 @@ import { MarkdownLoaderComponent } from './markdown-loader/markdown-loader.compo
     ObjectThumbnailComponent,
     IfChangesDirective,
     ContentTabComponent,
-    MarkdownLoaderComponent
+    MarkdownLoaderComponent,
+    FloorplanComponent,
+    SafePipe
   ]
 })
 export class SharedModule { }

@@ -4,7 +4,7 @@ import { ExhibitionComponent } from './exhibition.component';
 
 
 const routes: Routes = [
-    { path: ':id', component: ExhibitionComponent },
+    { path: ':collectionId', component: ExhibitionComponent },
     { path: '', redirectTo: 'current', pathMatch: 'full' }
 ];
 

@@ -1,19 +1,26 @@
-<div class="exhibition-view"
-     *ngIf="exhibitionId$ | async as id">
-    <!-- <museum-exhibition-navigation (next)="nextExhibition()"
-                                  (prev)="prevExhibition()"></museum-exhibition-navigation> -->
-    <iframe src="https://sevenclicks.org/?id=0&p0=Still_life&mute=0"
-            frameborder="0"></iframe>
-</div>
+<ng-container *ngIf="collectionId$ | async as id">
+    <ng-container *ngIf="exhibitionMeta$ | async as metadata">
+        <div class="exhibition-view"
+             [ngSwitch]="metadata.loadType">
+            <iframe *ngSwitchCase="'iframe'"
+                    [src]="metadata.loadId | safe"
+                    frameborder="0"></iframe>
+            <div style="height:100%;width:100%;"
+                 *ngSwitchDefault>
+                <template #dynamicContainer></template>
+            </div>
+        </div>
 
-<nav>
-    <div class="nav-level nav-bot-top-row">
-        <museum-content-tab title="About Exhibition">
-            <museum-exhibition-about [data$]='exhibitionMeta$'>
-            </museum-exhibition-about>
-        </museum-content-tab>
-        <museum-content-tab title="Object list">
-            <museum-exhibition-object-list></museum-exhibition-object-list>
-        </museum-content-tab>
-    </div>
-</nav>
+        <nav>
+            <div class="nav-level nav-bot-top-row">
+                <museum-content-tab header="About Exhibition">
+                    <museum-exhibition-about [data$]='exhibitionMeta$'>
+                    </museum-exhibition-about>
+                </museum-content-tab>
+                <museum-content-tab header="Object list">
+                    <museum-exhibition-object-list [data$]='exhibitionMeta$'></museum-exhibition-object-list>
+                </museum-content-tab>
+            </div>
+        </nav>
+    </ng-container>
+</ng-container>

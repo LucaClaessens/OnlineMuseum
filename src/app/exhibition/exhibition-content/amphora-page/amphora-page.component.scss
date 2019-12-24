@@ -1,0 +1,52 @@
+:host{
+    width: 100%;
+    height: 100%;
+}
+.timeline{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    drag-scroll{
+        flex: 1;
+        cursor: grab;
+        user-select: none !important;
+        &:active{
+            cursor: grabbing;
+        }
+        p,h1,h2,h3,h4,h5,span,a {
+            user-select: none !important;
+            cursor: grab;
+            &:active{
+                cursor: grabbing;
+            }
+        }
+        .timeline-header{
+            background-color: black;
+            color: white;
+            padding: 3px;
+            height: 30px;
+            white-space: nowrap;
+            width: auto;
+            .starter-spacer, .time-indicator{
+                width: 500px;
+                display: inline-block;
+            }
+        }
+        .timeline-content{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+.drag-scroll-content {
+    overflow: hidden !important;
+  }
+
+.timeline-draggable-content{
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 20px);
+}

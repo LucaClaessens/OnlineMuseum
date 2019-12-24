@@ -8,6 +8,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { EntranceComponent } from './entrance/entrance.component';
 import { SharedModule } from './_shared/shared.module';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 
 import { environment } from '../environments/environment';
 import { ExhibitionBannerComponent } from './_components/exhibition-banner/exhibition-banner.component';
@@ -21,12 +22,13 @@ import { ExhibitionBannerComponent } from './_components/exhibition-banner/exhib
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     BrowserAnimationsModule,
     SharedModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

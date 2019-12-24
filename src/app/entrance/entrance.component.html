@@ -1,45 +1,50 @@
-<section id="entrance-animation"
-         (click)="startExhibitionSequence()">
-    <div class="word">
-        <span class="char">O</span>
-        <span class="char">N</span>
-        <span class="char">L</span>
-        <span class="char">I</span>
-        <span class="char">N</span>
-        <span class="char">E</span>
+<div class="wistia_responsive_padding">
+    <div class="wistia_responsive_wrapper"
+         style="height:100%;left:0;position:absolute;top:0;width:100%;">
+        <iframe src="https://fast.wistia.net/embed/iframe/b2w086nkl2?seo=false&videoFoam=true&fullscreenButton=false&controlsVisibleOnLoad=false&playButton=false&playbar=false&copyLinkAndThumbnailEnabled=false"
+                title="Rock animation"
+                allowtransparency="true"
+                frameborder="0"
+                scrolling="no"
+                class="wistia_embed"
+                name="wistia_embed"
+                allowfullscreen
+                mozallowfullscreen
+                webkitallowfullscreen
+                oallowfullscreen
+                msallowfullscreen
+                width="100%"
+                height="100%"></iframe>
     </div>
-    <div class="word">
-        <span class="char">M</span>
-        <span class="char">U</span>
-        <span class="char">S</span>
-        <span class="char">E</span>
-        <span class="char">U</span>
-        <span class="char">M</span>
-    </div>
-</section>
+</div>
+<script src="https://fast.wistia.net/assets/external/E-v1.js"
+        async></script>
+
+<div class="hammer hammering"
+     *ngIf="!hammered"></div>
 
 <museum-exhibition-banner [@sideSlide]="showBanner ? 'visible' : 'hidden'"></museum-exhibition-banner>
 
 <nav>
     <div class="nav-level nav-bot-top-row">
-        <museum-content-tab title="About Online Museum"
+        <museum-content-tab header="About Online Museum"
                             (initialFocus)="about.fetchMarkdown()">
             <museum-markdown-loader [src]="'assets/md/about.md'"
                                     #about></museum-markdown-loader>
         </museum-content-tab>
-        <museum-content-tab title="Research and archive"
+        <museum-content-tab header="Research and archive"
                             (initialFocus)="research.fetchMarkdown()">
             <museum-markdown-loader [src]="'assets/md/research.md'"
                                     #research></museum-markdown-loader>
         </museum-content-tab>
     </div>
     <div class="nav-level nav-bot-bot-row">
-        <museum-content-tab title="Contributors"
+        <museum-content-tab header="Contributors"
                             (initialFocus)="contributors.fetchMarkdown()">
             <museum-markdown-loader [src]="'assets/md/contributors.md'"
                                     #contributors></museum-markdown-loader>
         </museum-content-tab>
-        <museum-content-tab title="Contact"
+        <museum-content-tab header="Contact"
                             (initialFocus)="contact.fetchMarkdown()">
             <museum-markdown-loader [src]="'assets/md/contact.md'"
                                     #contact></museum-markdown-loader>

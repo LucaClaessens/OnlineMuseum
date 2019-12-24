@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /collections/{collId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /exhibitions/{eid} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /objects/{oid} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /amphora/{oid} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}
