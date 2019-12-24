@@ -5,7 +5,10 @@
             <iframe *ngSwitchCase="'iframe'"
                     [src]="metadata.loadId | safe"
                     frameborder="0"></iframe>
-            <div *ngSwitchDefault>We should load a {{metadata.loadId}} component.</div>
+            <div style="height:100%;width:100%;"
+                 *ngSwitchDefault>
+                <template #dynamicContainer></template>
+            </div>
         </div>
 
         <nav>

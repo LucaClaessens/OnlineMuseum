@@ -1,0 +1,49 @@
+:host{
+    flex: 1;
+    flex-basis: 0;
+    border-bottom: 1px solid #000;
+    background-color: white;
+    color: #333;
+    transition: flex .3s cubic-bezier(0.19, 1, 0.22, 1);
+    position: relative;
+    white-space: nowrap;
+    min-height: 0;
+    &.focused{
+        flex: 4;
+        transition-delay: 0s;
+        museum-amphora-card{
+            padding: 32px;
+        }
+    }
+    &:last-child{
+        border-bottom: none;
+    }
+    museum-amphora-card{
+        padding: 8px;
+    }
+    .museum-identifier{
+        margin-top: 8px;
+        padding: 8px 16px;
+        left: 8px;
+        font-size: 11px;
+        background: white;
+        border-radius: 41px;
+        color: black;
+        position: fixed;
+        transform: scale(0.9);
+        transform-origin: top left;
+        transition: color .3s cubic-bezier(0.165, 0.84, 0.44, 1), background .3s cubic-bezier(0.165, 0.84, 0.44, 1), transform .5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        &.focused{
+            background: black;
+            color: white;
+            transform: scale(1);
+            transition-delay: 0s;
+        }
+    }
+    .year-timeline{
+        width: 500px;
+        display: inline-flex;
+        background-color: white;
+        height: 100%;
+    }
+}

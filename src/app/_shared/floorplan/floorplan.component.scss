@@ -1,0 +1,12 @@
+@import "breakpoints";
+
+#pointer{
+    position: absolute;
+    top: 50px;
+    right:30px;
+    height: 60px;
+}
+
+img{
+    pointer-events: none;
+}

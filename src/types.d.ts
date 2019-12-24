@@ -30,3 +30,13 @@ interface ObjectMetadata {
     name: string;
     summary: string;
 }
+
+interface Amphora {
+    amphoraImageUrl: string;
+    emoji: string[];
+    emojiImageUrl: string;
+    name: string;
+    origin: string;
+    timePeriod: number;
+    trackId: number;
+}
