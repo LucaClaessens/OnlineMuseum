@@ -27,6 +27,7 @@ export class AmphoraCardComponent implements OnInit, OnDestroy {
     const move$ = fromEvent(el, 'mousemove');
     const enter$ = fromEvent(el, 'mouseenter');
     const leave$ = fromEvent(el, 'mouseleave');
+
     const entered$ = merge(
       enter$.pipe(mapTo(true)),
       leave$.pipe(mapTo(false))
@@ -35,7 +36,10 @@ export class AmphoraCardComponent implements OnInit, OnDestroy {
       withLatestFrom(entered$),
       debounceTime(300),
       filter(([_, b]) => b),
-      mergeMap(() => timer(0, 2000).pipe(mapTo(this.showAmphora))),
+      mergeMap(() => timer(0, 2000)
+        .pipe(
+          mapTo(this.showAmphora)
+        )),
       takeUntil(leave$),
       repeat()
     );

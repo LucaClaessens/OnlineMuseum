@@ -48,5 +48,5 @@
 .timeline-draggable-content{
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: calc(100% - 20px);
 }
