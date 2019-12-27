@@ -5,8 +5,27 @@
     top: 50px;
     right:30px;
     height: 60px;
+    transform-origin: top center;
 }
 
 img{
     pointer-events: none;
+}
+
+div.floorplan{
+    width: 100%;
+    cursor: default;
+    z-index: 1;
+}
+
+svg{
+    width: 100%;
+    max-width: 100%;
+    g.hoverable{
+        z-index: 2;
+        cursor: pointer;
+        &:hover{
+            opacity: 0.5;
+        }
+    }
 }
