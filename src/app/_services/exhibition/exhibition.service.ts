@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +33,7 @@ export class ExhibitionService {
       )
       .get()
       .pipe(
+        filter(qs => qs.docs && qs.docs.length > 0),
         map(qs => {
           const doc = qs.docs[0];
           return {

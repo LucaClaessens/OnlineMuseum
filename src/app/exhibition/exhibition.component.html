@@ -1,5 +1,5 @@
 <ng-container *ngIf="collectionId$ | async as id">
-    <ng-container *ngIf="exhibitionMeta$ | async as metadata">
+    <ng-container *ngIf="exhibitionMeta$ | async as metadata; else awaitingMetadata">
         <div class="exhibition-view"
              [ngSwitch]="metadata.loadType">
             <iframe *ngSwitchCase="'iframe'"
@@ -23,4 +23,13 @@
             </div>
         </nav>
     </ng-container>
+    <ng-template #awaitingMetadata>
+        <div class="loader"
+             *ngIf="componentMayLoad; else exhibitionNotFound">
+            <museum-loader></museum-loader>
+        </div>
+    </ng-template>
+    <ng-template #exhibitionNotFound>
+        <museum-exhibition-not-found></museum-exhibition-not-found>
+    </ng-template>
 </ng-container>
