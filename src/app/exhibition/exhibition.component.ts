@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentFactory, ComponentRef, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router, Params } from '@angular/router';
-import { tap, map, flatMap, pluck, filter, take } from 'rxjs/operators';
-import { Observable, Subject, combineLatest, Subscription } from 'rxjs';
+import { tap, map, flatMap, pluck, filter } from 'rxjs/operators';
+import { Observable, combineLatest, Subscription } from 'rxjs';
 import { ExhibitionService } from '../_services/exhibition/exhibition.service';
 import { fadeValueChange, detailAnimation } from './exhibition.animations';
 import { AmphoraPageComponent } from './exhibition-content/amphora-page/amphora-page.component';
 import { ExhibitionNotFoundComponent } from './exhibition-content/exhibition-not-found/exhibition-not-found.component';
+import { PlacementPageComponent } from './exhibition-content/placement-page/placement-page.component';
 
 @Component({
   selector: 'museum-exhibition',
@@ -15,12 +16,12 @@ import { ExhibitionNotFoundComponent } from './exhibition-content/exhibition-not
 })
 export class ExhibitionComponent implements OnInit, OnDestroy {
 
-  showNavSource = new Subject();
   collectionId$: Observable<string>;
   componentRef: ComponentRef<any>;
 
   eidx$ = this.route.queryParams.pipe(pluck<any, string>('eidx'), map(e => Number(e)));
   exhibitionMeta$: Observable<ExhibitionMetadata & { id: string }>;
+  componentMayLoad = true;
 
   private sub = new Subscription();
 
@@ -34,12 +35,15 @@ export class ExhibitionComponent implements OnInit, OnDestroy {
   getComponentFromTypeIDString(typeID: string) {
     switch (typeID) {
       case 'museum-amphora-page': return AmphoraPageComponent;
+      case 'museum-placement-page': return PlacementPageComponent;
       default: return ExhibitionNotFoundComponent;
     }
   }
 
   createComponent(typeString: string) {
+
     const comp = this.getComponentFromTypeIDString(typeString);
+    if (!this.dynamicContainer) { return; }
     this.dynamicContainer.clear();
     const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory(comp);
     this.componentRef = this.dynamicContainer.createComponent(factory);
@@ -73,11 +77,21 @@ export class ExhibitionComponent implements OnInit, OnDestroy {
     );
 
     this.sub.add(
-      this.exhibitionMeta$.pipe(pluck('loadId')).subscribe(
+      this.exhibitionMeta$.pipe(
+        map(e => e ? e : { loadId: '404' }),
+        pluck('loadId'),
+        tap(id => {
+          if (id === '404') {
+            this.componentMayLoad = false;
+          }
+        })
+      ).subscribe(
         // We use setTimeout here to make sure our callstack is cleared and the
         // templateRef for `this.dynamicContainer` is present, as it resides in a
         // conditional (*ngIf) block.
-        loadId => setTimeout(() => this.createComponent(loadId), 1)
+        loadId => {
+          setTimeout(() => this.createComponent(loadId), 1);
+        }
       ));
   }
 

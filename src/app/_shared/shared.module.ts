@@ -33,6 +33,7 @@ import { FloorplanComponent } from './floorplan/floorplan.component';
     ContentTabComponent,
     MarkdownLoaderComponent,
     FloorplanComponent,
+    LoaderComponent,
     SafePipe
   ]
 })

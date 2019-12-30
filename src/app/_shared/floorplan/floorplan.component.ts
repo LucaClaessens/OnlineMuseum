@@ -8,7 +8,8 @@ enum routeIDToClass {
   'Lw==' = 'entrance',
   'L2VudHJhbmNl' = 'entrance',
   'L2V4aGliaXRpb24veThhOGFxSjJFeE11SG1XcmVaWkk/ZWlkeD0w' = 'sevenclicks',
-  'L2V4aGliaXRpb24veThhOGFxSjJFeE11SG1XcmVaWkk/ZWlkeD0x' = 'amphora'
+  'L2V4aGliaXRpb24veThhOGFxSjJFeE11SG1XcmVaWkk/ZWlkeD0x' = 'amphora',
+  'L2V4aGliaXRpb24veThhOGFxSjJFeE11SG1XcmVaWkk/ZWlkeD0y' = 'miseenscene',
 }
 
 @Component({
@@ -58,6 +59,8 @@ export class FloorplanComponent implements AfterViewInit {
     const prevActiveNode: HTMLElement = this.elRef.nativeElement.querySelector(`.active-text`);
     const container = this.elRef.nativeElement;
 
+    if (!node) { return; }
+
     if (prevActiveNode) {
       prevActiveNode.classList.remove('active-text');
     }
@@ -87,7 +90,6 @@ export class FloorplanComponent implements AfterViewInit {
       debounceTime(200),
       map((className) => {
         const node = this.elRef.nativeElement.querySelector(`#${className}-text`);
-        console.log('routechange node', node);
         return node;
       }));
 
