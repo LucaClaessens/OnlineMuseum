@@ -2,6 +2,7 @@
 </router-outlet>
 
 <museum-content-tab header="Floor plan"
-                    #floorplan>
-    <museum-floorplan></museum-floorplan>
+                    #floorplan
+                    (initialFocus)="floorplanInner.initPointer($event)">
+    <museum-floorplan #floorplanInner></museum-floorplan>
 </museum-content-tab>

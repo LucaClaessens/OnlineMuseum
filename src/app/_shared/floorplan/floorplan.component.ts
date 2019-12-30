@@ -1,9 +1,11 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { AppService } from 'src/app/_services/app.service';
-import { tap, map, debounceTime } from 'rxjs/operators';
+import { tap, map, debounceTime, mapTo, filter } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { fromEvent, merge, Subject } from 'rxjs';
 
 enum routeIDToClass {
+  'Lw==' = 'entrance',
   'L2VudHJhbmNl' = 'entrance',
   'L2V4aGliaXRpb24veThhOGFxSjJFeE11SG1XcmVaWkk/ZWlkeD0w' = 'sevenclicks',
   'L2V4aGliaXRpb24veThhOGFxSjJFeE11SG1XcmVaWkk/ZWlkeD0x' = 'amphora'
@@ -27,6 +29,10 @@ export class FloorplanComponent implements AfterViewInit {
     map((url) => routeIDToClass[url])
   );
 
+  pointerOffset: { top: number, left: number };
+  private activeNode: HTMLElement;
+  init$ = new Subject();
+
   svgClicked(event: MouseEvent) {
     const tappedElem = event.target as HTMLElement;
 
@@ -48,25 +54,51 @@ export class FloorplanComponent implements AfterViewInit {
 
   }
 
-  loadPointerBeneath(node: HTMLElement) {
-    const pointer = this.pointer.nativeElement;
-    const top = node.offsetTop;
-    const left = node.offsetLeft;
+  repositionPointerBeneath(node: HTMLElement) {
+    const prevActiveNode: HTMLElement = this.elRef.nativeElement.querySelector(`.active-text`);
+    const container = this.elRef.nativeElement;
 
-    pointer.style.top = `${top} px`;
-    pointer.style.left = `${left} px`;
+    if (prevActiveNode) {
+      prevActiveNode.classList.remove('active-text');
+    }
+
+    node.classList.add('active-text');
+    const nodeRect = node.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+
+    this.pointerOffset = {
+      top: nodeRect.top - containerRect.top + 15,
+      left: nodeRect.left - containerRect.left - 15
+    };
+
+  }
+
+  initPointer(state) {
+    setTimeout(() => {
+      this.init$.next(state);
+    })
   }
 
   constructor(private app: AppService, private router: Router, private elRef: ElementRef) { }
 
   ngAfterViewInit() {
-    this.activeRouteAsClass$.pipe(
-      debounceTime(500),
+
+    const routeChange = this.activeRouteAsClass$.pipe(
+      debounceTime(200),
       map((className) => {
         const node = this.elRef.nativeElement.querySelector(`#${className}-text`);
+        console.log('routechange node', node);
         return node;
-      })
-    ).subscribe(node => this.loadPointerBeneath(node));
+      }));
+
+    const resize = fromEvent(window, 'resize').pipe(debounceTime(200));
+
+    merge(
+      routeChange.pipe(tap(n => this.activeNode = n)),
+      resize,
+      this.init$,
+    ).subscribe(() => this.repositionPointerBeneath(this.activeNode));
+
   }
 
 }

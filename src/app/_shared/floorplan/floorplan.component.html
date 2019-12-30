@@ -298,6 +298,7 @@
 
 <img id="pointer"
      #pointer
+     [ngStyle]="{'top.px': pointerOffset?.top, 'left.px': pointerOffset?.left }"
      [className]="activeRouteAsClass$ | async"
      src="/assets/you-are-here_icon.svg"
      alt="You are here">
