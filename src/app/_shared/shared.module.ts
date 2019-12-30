@@ -10,6 +10,7 @@ import { MarkdownLoaderComponent } from './markdown-loader/markdown-loader.compo
 import { LoaderComponent } from './loader/loader.component';
 import { SafePipe } from './../_pipes/safe.pipe';
 import { FloorplanComponent } from './floorplan/floorplan.component';
+import { InlineSVGModule } from 'ng-inline-svg';
 
 
 
@@ -24,6 +25,7 @@ import { FloorplanComponent } from './floorplan/floorplan.component';
     FloorplanComponent
   ],
   imports: [
+    InlineSVGModule.forRoot(),
     CommonModule,
     RouterModule,
     HttpClientModule,
