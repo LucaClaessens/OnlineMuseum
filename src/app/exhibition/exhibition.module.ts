@@ -14,6 +14,7 @@ import { TimelineComponent } from './exhibition-content/amphora-page/timeline/ti
 import { YearAgePipe } from '../_pipes/year-age.pipe';
 import { AmphoraCardComponent } from './exhibition-content/amphora-page/amphora-card/amphora-card.component';
 import { DeferLoadModule } from '@trademe/ng-defer-load';
+import { PlacementPageComponent } from './exhibition-content/placement-page/placement-page.component';
 
 
 
@@ -27,7 +28,8 @@ import { DeferLoadModule } from '@trademe/ng-defer-load';
     ExhibitionNotFoundComponent,
     TimelineComponent,
     YearAgePipe,
-    AmphoraCardComponent
+    AmphoraCardComponent,
+    PlacementPageComponent
   ],
   imports: [
     TooltipModule,
@@ -37,6 +39,6 @@ import { DeferLoadModule } from '@trademe/ng-defer-load';
     DragScrollModule,
     DeferLoadModule
   ],
-  entryComponents: [AmphoraPageComponent, ExhibitionNotFoundComponent]
+  entryComponents: [AmphoraPageComponent, ExhibitionNotFoundComponent, PlacementPageComponent]
 })
 export class ExhibitionModule { }
