@@ -1,0 +1,16 @@
+.content-container{
+    display: flex;
+    padding: 2em 5em;
+    width: 100%;
+    .video-area{
+        flex: 3;
+        height: 400px;
+        border: 1px solid white;
+    }
+    .details-area{
+        flex: 1;
+        border: 1px solid white;
+        margin: 0 2em;
+        border-radius: 8px;
+    }
+}

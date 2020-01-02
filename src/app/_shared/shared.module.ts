@@ -11,8 +11,6 @@ import { LoaderComponent } from './loader/loader.component';
 import { SafePipe } from './../_pipes/safe.pipe';
 import { FloorplanComponent } from './floorplan/floorplan.component';
 
-
-
 @NgModule({
   declarations: [
     ObjectThumbnailComponent,
@@ -35,6 +33,7 @@ import { FloorplanComponent } from './floorplan/floorplan.component';
     ContentTabComponent,
     MarkdownLoaderComponent,
     FloorplanComponent,
+    LoaderComponent,
     SafePipe
   ]
 })
