@@ -1,11 +1,13 @@
 <section class="timeline">
     <drag-scroll class="timeline-drag"
+                 #drag
                  [scrollbar-hidden]="true">
         <div drag-scrollable-item
              class="timeline-draggable-content">
             <div class="timeline-header">
                 <div class="starter-spacer"></div>
                 <div class="time-indicator"
+                     [attr.data-year-id]='year'
                      *ngFor="let year of timeIndicators">
                     {{ year | yearAge }}
                 </div>
@@ -24,6 +26,6 @@
         </div>
     </drag-scroll>
     <div class="timeline-footer">
-        <span>Footer about things like 👋🏻</span>
+        <span>{{ footerText }}</span>
     </div>
 </section>
