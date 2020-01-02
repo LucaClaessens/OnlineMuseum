@@ -1,15 +1,35 @@
-<ng-container>
+<div class="title">
+    <h1>
+        STILL LIFE WITH <br>
+        ‘MISE - EN - SCÈNE’
+    </h1>
+    <h2>
+        (PLACING OF A STAGE)
+    </h2>
+</div>
+
+<ng-container *ngFor="let d of data">
+
+    <div class="content-title">
+        <h1>
+            {{d.titleSegments[0]}}
+            <span class="in">in</span>
+            {{d.titleSegments[1]}}
+        </h1>
+    </div>
+
+
     <div class="content-container">
         <div class="video-area">
-
         </div>
         <div class="details-area">
-            <div class="video-object">
+            <div class="video-object"
+                 *ngFor="let object of d.objects">
                 <div class="object-image">
-                    <img src=""
+                    <img [src]="object.image"
                          alt="Image">
                 </div>
-                <div class="object-description">Link</div>
+                <div class="object-description">{{object.description}}</div>
             </div>
         </div>
     </div>
