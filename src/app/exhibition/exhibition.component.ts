@@ -36,6 +36,7 @@ export class ExhibitionComponent implements OnInit, OnDestroy {
     switch (typeID) {
       case 'museum-amphora-page': return AmphoraPageComponent;
       case 'museum-placement-page': return PlacementPageComponent;
+      case '404': return ExhibitionNotFoundComponent;
       default: return ExhibitionNotFoundComponent;
     }
   }
@@ -45,7 +46,7 @@ export class ExhibitionComponent implements OnInit, OnDestroy {
     const comp = this.getComponentFromTypeIDString(typeString);
     if (!this.dynamicContainer) { return; }
     this.dynamicContainer.clear();
-    const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory(comp);
+    const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory<any>(comp);
     this.componentRef = this.dynamicContainer.createComponent(factory);
   }
 
