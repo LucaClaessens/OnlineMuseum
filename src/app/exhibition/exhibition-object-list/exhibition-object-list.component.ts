@@ -10,6 +10,8 @@ export class ExhibitionObjectListComponent implements OnInit {
 
   constructor() { }
 
+  inScreenBounds = false;
+
   @Input() objects$: Observable<ObjectMetadataGroup[]>;
 
   ngOnInit() {
