@@ -7,7 +7,7 @@ export const focusAnimation = trigger('focusAnimation', [
     })),
     state('visible', style({
         transform: 'translateY(calc(-100% + 100px))',
-        'padding-bottom': '115px'
+        'padding-bottom': '0px'
     })),
     transition('hidden => visible', [
         animate('0.1s')

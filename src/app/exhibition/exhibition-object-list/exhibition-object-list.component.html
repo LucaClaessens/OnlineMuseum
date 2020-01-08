@@ -1,7 +1,17 @@
-<ng-container *ngIf="imageData$ | async as images">
-    <div class="object"
-         *ngFor="let o of images">
-        <img [src]="o.image"
-             [alt]="o.name">
+<ng-container *ngIf="objects$ | async as categories">
+    <div class="category"
+         *ngFor="let category of categories">
+        <p>{{category.key}}</p>
+        <div class="objects">
+            <div class="object"
+                 *ngFor="let o of category.objects">
+                <a [href]="o.link"
+                   target="_blank">
+                    <img [src]="o.image"
+                         [alt]="o.link"
+                         loading="lazy">
+                </a>
+            </div>
+        </div>
     </div>
 </ng-container>
