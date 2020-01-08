@@ -11,6 +11,7 @@ export class AmphoraPageComponent implements AfterViewInit {
   footerText = 'Loading..';
   private observer: IntersectionObserver;
   private footerTextEntries: { year: number, text: string }[] = [
+    { year: -660, text: `"It's freezing and snowing in New York—we need global warming!" - Donald Trump 🙍🏼‍♂️` },
     { year: -530, text: 'Initial value loaded from array (-530)' },
     { year: -520, text: 'it is def -520😎' },
     { year: -510, text: '-510 ⏰' },
@@ -60,7 +61,11 @@ export class AmphoraPageComponent implements AfterViewInit {
   }
 
   constructor(private elRef: ElementRef) {
-    this.timeIndicators = this.constructIndicators(-530, 230);
+    this.timeIndicators = [
+      ...this.constructIndicators(-660, -250),
+      0,
+      ...this.constructIndicators(1390, 1950)
+    ];
   }
 
   ngAfterViewInit() {

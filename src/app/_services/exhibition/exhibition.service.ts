@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { map, filter } from 'rxjs/operators';
+import { map, filter, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -46,18 +46,34 @@ export class ExhibitionService {
   }
 
   fetchExhibitionObjects(exhibitionId: string) {
+    console.log('exhibitionId', exhibitionId);
     return this.db
       .collection('objects', ref => ref
-        .where('exhibitions', 'array-contains', exhibitionId)
+        .where('exhibition', '==', exhibitionId)
       )
       .get()
       .pipe(
         map(qs => {
           return qs.docs.map(doc => ({
             id: doc.id,
-            ...doc.data() as ObjectMetadata
+            ...doc.data() as ObjectMetadataDb
           }));
-        })
+        }),
+        tap(e => console.log(e)),
+        map(objects => objects.reduce((groups, object: ObjectMetadataDb) => {
+          const { group } = object;
+          const objectGroup = groups.find(g => g.key === group);
+          if (!objectGroup) {
+            groups.push({
+              key: group,
+              objects: [object]
+            });
+          } else {
+            objectGroup.objects.push(object);
+          }
+          return groups;
+        }, [] as ObjectMetadataGroup[])),
+        tap(e => console.log(e))
       )
       .toPromise();
   }

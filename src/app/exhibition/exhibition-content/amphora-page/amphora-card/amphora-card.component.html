@@ -1,8 +1,9 @@
-<div class="emoji"
-     (deferLoad)="hideEmoji = false">
+<div class="emoji">
      <div class="foreground"
+          (deferLoad)="hideEmoji = false"
           #foreground>
           <img *ngIf="!hideEmoji"
+               loading="lazy"
                @insertRemove
                [src]="amphora.emojiImageUrl"
                [alt]="amphora.name">
@@ -10,7 +11,8 @@
      <div class="background"
           #background>
           <img *ngIf="showAmphora"
-               @insertRemove
+               loading="lazy"
+               @insertRemoveAmphora
                [src]="amphora.amphoraImageUrl"
                [alt]="amphora.name">
      </div>

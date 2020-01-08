@@ -13,6 +13,12 @@
     transform: translateY(0px);
     transition: transform .3s cubic-bezier(0.165, 0.84, 0.44, 1);
     cursor: pointer;
+    &[disabled="true"]{
+        cursor: forbidden;
+        color: grey;
+        border-color: gray;
+        pointer-events: none;
+    }
     &:hover{
         transform: translateY(-10px);
     }
@@ -35,4 +41,9 @@
     padding: 0 16px;
     max-height: 700px;
     overflow-y: auto;
+}
+
+.content-bottom-padding{
+    height: 115px;
+    width: 100%;
 }

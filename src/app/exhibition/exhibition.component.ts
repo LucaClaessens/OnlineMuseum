@@ -21,6 +21,8 @@ export class ExhibitionComponent implements OnInit, OnDestroy {
 
   eidx$ = this.route.queryParams.pipe(pluck<any, string>('eidx'), map(e => Number(e)));
   exhibitionMeta$: Observable<ExhibitionMetadata & { id: string }>;
+  objects$: Observable<ObjectMetadataGroup[]>;
+  disableObjectTab$: Observable<boolean>;
   componentMayLoad = true;
 
   private sub = new Subscription();
@@ -76,6 +78,12 @@ export class ExhibitionComponent implements OnInit, OnDestroy {
     ).pipe(
       flatMap(([cid, eidx]) => this.exhibitionService.fetchExhibition(cid, eidx))
     );
+
+    this.objects$ = this.exhibitionMeta$.pipe(
+      flatMap(exhibition => this.exhibitionService.fetchExhibitionObjects(exhibition.id))
+    );
+
+    this.disableObjectTab$ = this.objects$.pipe(map(o => o.length === 0));
 
     this.sub.add(
       this.exhibitionMeta$.pipe(

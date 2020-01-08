@@ -1,11 +1,13 @@
-:host{
+.objects{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 }
 
 .object{
-    max-width: 200px;
+    width: 125px;
+    height: 125px;
+    object-fit: contain;
     padding: 16px;
     img{
         width: 100%;
