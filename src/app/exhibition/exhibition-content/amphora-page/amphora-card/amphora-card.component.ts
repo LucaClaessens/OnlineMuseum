@@ -1,13 +1,13 @@
-import { Component, OnInit, OnDestroy, Input, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ElementRef, ViewChild, HostBinding } from '@angular/core';
 import { Subscription, fromEvent, merge, timer } from 'rxjs';
 import { mapTo, withLatestFrom, debounceTime, filter, scan, mergeMap, takeUntil, repeat, take, tap, pairwise, startWith } from 'rxjs/operators';
-import { insertRemove } from './amphora-card.animation';
+import { insertRemove, insertRemoveAmphora } from './amphora-card.animation';
 
 @Component({
   selector: 'museum-amphora-card',
   templateUrl: './amphora-card.component.html',
   styleUrls: ['./amphora-card.component.scss'],
-  animations: [insertRemove]
+  animations: [insertRemove, insertRemoveAmphora]
 })
 export class AmphoraCardComponent implements OnInit, OnDestroy {
 
@@ -15,6 +15,9 @@ export class AmphoraCardComponent implements OnInit, OnDestroy {
   showAmphora = false;
   hideEmoji = true;
 
+  @HostBinding('@insertRemove') get getInserRemoveAnimation(): boolean {
+    return true;
+  }
   @ViewChild('foreground', { static: true }) foreground: ElementRef;
   @ViewChild('background', { static: true }) background: ElementRef;
 
@@ -23,6 +26,7 @@ export class AmphoraCardComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit() {
+
     const el = this.foreground.nativeElement;
     const move$ = fromEvent(el, 'mousemove');
     const enter$ = fromEvent(el, 'mouseenter');

@@ -24,11 +24,21 @@ interface CollectionMetadata {
     title: string;
 }
 
-interface ObjectMetadata {
-    exhibitions: string[];
+interface ObjectMetadataDb {
+    exhibition: string;
     image: string;
-    name: string;
-    summary: string;
+    link: string;
+    group: string;
+}
+
+interface ObjectMetadataGroup {
+    key: string;
+    objects: ObjectMetadata[];
+}
+
+interface ObjectMetadata {
+    image: string;
+    link: string;
 }
 
 interface Amphora {
