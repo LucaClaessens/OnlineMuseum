@@ -1,7 +1,7 @@
 :host{
     flex: 1;
     flex-basis: 0;
-    border-bottom: 1px solid #000;
+    // border-bottom: 1px solid #000;
     background-color: white;
     color: #333;
     transition: flex .3s cubic-bezier(0.19, 1, 0.22, 1);
@@ -9,7 +9,8 @@
     white-space: nowrap;
     min-height: 0;
     &.focused{
-        flex: 4;
+        flex: 8;
+        max-height: 820px;
         transition-delay: 0s;
         museum-amphora-card{
             padding: 32px;
@@ -45,5 +46,6 @@
         display: inline-flex;
         background-color: white;
         height: 100%;
+        box-shadow: inset 0 -30px 30px -40px #0000006e;
     }
 }

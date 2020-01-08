@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input, ElementRef, ViewChild } from '@angular/core';
 import { Subscription, fromEvent, merge, timer } from 'rxjs';
-import { mapTo, withLatestFrom, debounceTime, filter, map, scan, mergeMap, takeUntil, repeat } from 'rxjs/operators';
+import { mapTo, withLatestFrom, debounceTime, filter, scan, mergeMap, takeUntil, repeat, take, tap, pairwise, startWith } from 'rxjs/operators';
 import { insertRemove } from './amphora-card.animation';
 
 @Component({
@@ -28,19 +28,22 @@ export class AmphoraCardComponent implements OnInit, OnDestroy {
     const enter$ = fromEvent(el, 'mouseenter');
     const leave$ = fromEvent(el, 'mouseleave');
 
-    const entered$ = merge(
+    const inside$ = merge(
       enter$.pipe(mapTo(true)),
       leave$.pipe(mapTo(false))
     );
-    const $hideEmoji = move$.pipe(
-      withLatestFrom(entered$),
-      debounceTime(300),
-      filter(([_, b]) => b),
+
+    const triggerAnimationSequence$ = move$.pipe(
+      debounceTime(250),
+      withLatestFrom(inside$.pipe(startWith(false), pairwise())),
+      filter(([_, [p, c]]) => p === false && p !== c));
+
+    const $hideEmoji = triggerAnimationSequence$.pipe(
       mergeMap(() => timer(0, 2000)
         .pipe(
-          mapTo(this.showAmphora)
+          mapTo(this.showAmphora),
         )),
-      takeUntil(leave$),
+      takeUntil(inside$.pipe(filter((e) => e === false))),
       repeat()
     );
 
@@ -49,7 +52,11 @@ export class AmphoraCardComponent implements OnInit, OnDestroy {
     );
 
     this.sub.add(
-      enter$.subscribe(() => this.showAmphora = true)
+      enter$.pipe(take(1)).subscribe(() => this.showAmphora = true)
+    );
+
+    this.sub.add(
+      leave$.pipe(debounceTime(500)).subscribe(() => this.hideEmoji = false)
     );
 
   }
