@@ -1,0 +1,38 @@
+[
+    {
+        "titleSegments": [
+            "CAT KILLER",
+            "A CLOCKWORK ORANGE"
+        ],
+        "videoUrl": "",
+        "objects": [
+            {
+                "image": "",
+                "description": "Description",
+                "url": "www.google.com"
+            }
+        ]
+    },
+    {
+        "titleSegments": [
+            "SHOPPING",
+            "MARIE ANTOINETTE"
+        ],
+        "videoUrl": "",
+        "objects": [
+            {
+                "image": "",
+                "description": "Description Shopping",
+                "url": "www.shooping.com"
+            }
+        ]
+    },
+    {
+        "titleSegments": [
+            "WELCOME TO JURASSIC PARK",
+            "JURASSIC PARK"
+        ],
+        "videoUrl": "",
+        "objects": []
+    }
+]

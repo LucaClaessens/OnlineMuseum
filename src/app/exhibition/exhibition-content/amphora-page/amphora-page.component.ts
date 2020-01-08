@@ -60,7 +60,11 @@ export class AmphoraPageComponent implements AfterViewInit {
   }
 
   constructor(private elRef: ElementRef) {
-    this.timeIndicators = this.constructIndicators(-530, 230);
+    this.timeIndicators = [
+      ...this.constructIndicators(-660, -250),
+      0,
+      ...this.constructIndicators(1390, 1950)
+    ];
   }
 
   ngAfterViewInit() {

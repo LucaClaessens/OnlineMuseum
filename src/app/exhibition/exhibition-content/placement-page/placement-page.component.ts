@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import dataSet from './miseEnSceneData.json';
 
 @Component({
   selector: 'museum-placement-page',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlacementPageComponent implements OnInit {
 
+  data = dataSet;
+
   constructor() { }
 
   ngOnInit() {
+    console.log('data', this.data);
   }
 
 }
