@@ -46,7 +46,6 @@ export class ExhibitionService {
   }
 
   fetchExhibitionObjects(exhibitionId: string) {
-    console.log('exhibitionId', exhibitionId);
     return this.db
       .collection('objects', ref => ref
         .where('exhibition', '==', exhibitionId)
@@ -59,7 +58,6 @@ export class ExhibitionService {
             ...doc.data() as ObjectMetadataDb
           }));
         }),
-        tap(e => console.log(e)),
         map(objects => objects.reduce((groups, object: ObjectMetadataDb) => {
           const { group } = object;
           const objectGroup = groups.find(g => g.key === group);
@@ -72,8 +70,7 @@ export class ExhibitionService {
             objectGroup.objects.push(object);
           }
           return groups;
-        }, [] as ObjectMetadataGroup[])),
-        tap(e => console.log(e))
+        }, [] as ObjectMetadataGroup[]))
       )
       .toPromise();
   }

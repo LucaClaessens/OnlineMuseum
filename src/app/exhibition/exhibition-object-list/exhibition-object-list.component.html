@@ -1,17 +1,25 @@
 <ng-container *ngIf="objects$ | async as categories">
-    <div class="category"
-         *ngFor="let category of categories">
-        <p>{{category.key}}</p>
-        <div class="objects">
-            <div class="object"
-                 *ngFor="let o of category.objects">
-                <a [href]="o.link"
-                   target="_blank">
-                    <img [src]="o.image"
-                         [alt]="o.link"
-                         loading="lazy">
-                </a>
+    <div class="loaded-wrapper"
+         (deferLoad)="inScreenBounds = true">
+        <ng-container *ngIf="inScreenBounds">
+            <div class="category"
+                 *ngFor="let category of categories">
+                <p>{{category.key}}</p>
+                <div class="objects">
+                    <div class="object"
+                         (deferLoad)="o.loaded = true"
+                         *ngFor="let o of category.objects">
+                        <a [href]="o.link"
+                           target="_blank"
+                           *ngIf="o.loaded">
+                            <img [src]="o.image"
+                                 [alt]="o.link"
+                                 loading="lazy">
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
+        </ng-container>
+
     </div>
 </ng-container>
