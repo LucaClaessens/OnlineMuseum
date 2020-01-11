@@ -1,0 +1,132 @@
+:host{
+    position: relative;
+    width: 100vh;
+    height: 100vh;
+}
+
+.slider-wrap{
+    width: 100vw;
+    position: relative;
+    img-comparison-slider {
+        // width: 100%;
+        // height: 100%;
+        --divider: 2px solid black;
+        --hint-opacity: 0.3;
+        .after_box{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            user-select: none;
+        }
+        img{
+            width: 100vw;
+        }
+      } 
+      .itemname{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 16px;
+        text-align: center;
+        z-index: 1;
+        user-select: none;
+    }
+    button.shop{
+        position: absolute;
+        top: 10px;
+        right: 50px;
+    }
+    
+      p{
+        color: black;
+    }
+}
+
+#shop{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000000000;
+    background-color: #fafafa;
+    color: black;
+    .shop-content{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 2rem;
+        button.exitshop{
+            position: absolute;
+            top: 10px;
+            right: 50px;
+        }
+    }
+    .shop-item{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        .item-image{
+            width: 300px;
+            height: 300px;
+            background-color: #cecece;
+        }
+        .item-name{
+            font-size: 1rem;
+            margin: 16px 0;
+        }
+        .item-source{
+            font-size: .8rem;
+            .underline{
+                text-decoration: underline;
+            }
+        }
+        .download-stl{
+            margin-top: 16px;
+            border-radius: 16px;
+            padding: 8px 16px;
+            border-color: black;
+            transition: background-color .3s cubic-bezier(0.23, 1, 0.320, 1), color .3s cubic-bezier(0.23, 1, 0.320, 1);
+            background-color: white;
+            color: black;
+            cursor: pointer;
+            &:hover{
+                color: white;
+                background-color: black;
+                transition-delay: 0s;
+            }
+        }
+    }
+}
+
+.box-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000000000;
+    img{
+        max-width: 60vw;
+    }
+}
+
+button.shopbutton{
+    pointer-events: all;
+    background: none;
+    color: black;
+    text-decoration: underline;
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: .3s opacity cubic-bezier(0.23, 1, 0.320, 1);
+    &:hover{
+        opacity: 0.5;
+        transition-delay: 0s;
+    }
+}

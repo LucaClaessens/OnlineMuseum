@@ -7,6 +7,7 @@ import { fadeValueChange, detailAnimation } from './exhibition.animations';
 import { AmphoraPageComponent } from './exhibition-content/amphora-page/amphora-page.component';
 import { ExhibitionNotFoundComponent } from './exhibition-content/exhibition-not-found/exhibition-not-found.component';
 import { PlacementPageComponent } from './exhibition-content/placement-page/placement-page.component';
+import { StockholmFontPageComponent } from './exhibition-content/stockholm-font-page/stockholm-font-page.component';
 
 @Component({
   selector: 'museum-exhibition',
@@ -38,6 +39,7 @@ export class ExhibitionComponent implements OnInit, OnDestroy {
     switch (typeID) {
       case 'museum-amphora-page': return AmphoraPageComponent;
       case 'museum-placement-page': return PlacementPageComponent;
+      case 'museum-stockholm-font-page': return StockholmFontPageComponent;
       case '404': return ExhibitionNotFoundComponent;
       default: return ExhibitionNotFoundComponent;
     }

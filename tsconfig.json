@@ -11,12 +11,16 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
+    "allowJs": true,
     "typeRoots": [
       "node_modules/@types"
     ],
+    "types": [
+      "webgl2"
+    ],
     "lib": [
       "es2018",
-      "dom"
+      "dom",
     ],
     "resolveJsonModule": true,
     "esModuleInterop": true

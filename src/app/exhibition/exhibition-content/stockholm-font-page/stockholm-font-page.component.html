@@ -1,0 +1,45 @@
+<div class="slider-wrap">
+    <img-comparison-slider>
+        <img slot="before"
+             [src]="beforeImageUrl">
+        <img slot="after"
+             [src]="afterImageUrl">
+    </img-comparison-slider>
+    <p class="itemname">stockholm-font.stl</p>
+    <button [routerLink]="'./'"
+            (click)="gotoShop()"
+            queryParamsHandling="merge"
+            fragment="shop"
+            class="shop shopbutton">
+        Shop
+    </button>
+</div>
+
+<section id="shop"
+         *ngIf="showShop">
+    <div class="shop-content">
+        <button class="shopbutton exitshop"
+                (click)="exitShop()">Close shop</button>
+        <div class="shop-item">
+            <!-- <div class="item-image">
+    </div> -->
+            <model-viewer class="item-image"
+                          src="/assets/models/washing-bowl.glb"
+                          camera-controls
+                          auto-rotate
+                          background-color="#fafafa">
+
+            </model-viewer>
+            <div class="item-name">stockholm-font-washingupbowl.stl</div>
+            <div class="item-source"><span class="underline">Source: </span>stockholm-font.stl</div>
+            <button class="download-stl">DOWNLOAD STL</button>
+        </div>
+    </div>
+</section>
+
+<div class="box-image"
+     @insertRemove
+     *ngIf="showBoxImage">
+    <img [src]="boxImage"
+         alt="A 3D model in a box">
+</div>
