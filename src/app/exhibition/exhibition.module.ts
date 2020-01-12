@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExhibitionComponent } from './exhibition.component';
 import { ExhibitionRoutingModule } from './exhibition-routing.module';
@@ -15,8 +15,7 @@ import { YearAgePipe } from '../_pipes/year-age.pipe';
 import { AmphoraCardComponent } from './exhibition-content/amphora-page/amphora-card/amphora-card.component';
 import { DeferLoadModule } from '@trademe/ng-defer-load';
 import { PlacementPageComponent } from './exhibition-content/placement-page/placement-page.component';
-
-
+import { StockholmFontPageComponent } from './exhibition-content/stockholm-font-page/stockholm-font-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,8 @@ import { PlacementPageComponent } from './exhibition-content/placement-page/plac
     TimelineComponent,
     YearAgePipe,
     AmphoraCardComponent,
-    PlacementPageComponent
+    PlacementPageComponent,
+    StockholmFontPageComponent
   ],
   imports: [
     TooltipModule,
@@ -39,6 +39,7 @@ import { PlacementPageComponent } from './exhibition-content/placement-page/plac
     DragScrollModule,
     DeferLoadModule
   ],
-  entryComponents: [AmphoraPageComponent, ExhibitionNotFoundComponent, PlacementPageComponent]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  entryComponents: [AmphoraPageComponent, ExhibitionNotFoundComponent, PlacementPageComponent, StockholmFontPageComponent]
 })
 export class ExhibitionModule { }

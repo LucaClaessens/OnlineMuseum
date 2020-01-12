@@ -25,6 +25,7 @@ interface CollectionMetadata {
 }
 
 interface ObjectMetadataDb {
+    annotation: string | null;
     exhibition: string;
     image: string;
     link: string;
@@ -37,8 +38,15 @@ interface ObjectMetadataGroup {
 }
 
 interface ObjectMetadata {
+    annotation: string | null;
     image: string;
     link: string;
+}
+
+interface ModelResource {
+    image: string;
+    link: string;
+    name: string;
 }
 
 interface Amphora {
@@ -49,4 +57,9 @@ interface Amphora {
     origin: string;
     timePeriod: number;
     trackId: number;
+}
+
+interface AmphoraFootnote {
+    year: number;
+    text: string;
 }

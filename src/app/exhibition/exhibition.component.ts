@@ -7,6 +7,7 @@ import { fadeValueChange, detailAnimation } from './exhibition.animations';
 import { AmphoraPageComponent } from './exhibition-content/amphora-page/amphora-page.component';
 import { ExhibitionNotFoundComponent } from './exhibition-content/exhibition-not-found/exhibition-not-found.component';
 import { PlacementPageComponent } from './exhibition-content/placement-page/placement-page.component';
+import { StockholmFontPageComponent } from './exhibition-content/stockholm-font-page/stockholm-font-page.component';
 
 @Component({
   selector: 'museum-exhibition',
@@ -38,6 +39,7 @@ export class ExhibitionComponent implements OnInit, OnDestroy {
     switch (typeID) {
       case 'museum-amphora-page': return AmphoraPageComponent;
       case 'museum-placement-page': return PlacementPageComponent;
+      case 'museum-stockholm-font-page': return StockholmFontPageComponent;
       case '404': return ExhibitionNotFoundComponent;
       default: return ExhibitionNotFoundComponent;
     }
@@ -80,7 +82,23 @@ export class ExhibitionComponent implements OnInit, OnDestroy {
     );
 
     this.objects$ = this.exhibitionMeta$.pipe(
-      flatMap(exhibition => this.exhibitionService.fetchExhibitionObjects(exhibition.id))
+      flatMap(exhibition => this.exhibitionService.fetchExhibitionObjects(exhibition.id)),
+      map(groups => groups.sort((a, b) => {
+        const _a = a.key.toLowerCase();
+        const _b = b.key.toLowerCase();
+        if (_a === _b) { return 0; }
+        if (_a > _b) { return 1; }
+        return -1;
+      })),
+      map(g => g.map(g => ({
+        key: g.key, objects: g.objects.sort((a, b) => {
+          const _a = a.annotation.toLowerCase();
+          const _b = b.annotation.toLowerCase();
+          if (_a === _b) { return 0; }
+          if (_a > _b) { return 1; }
+          return -1;
+        })
+      })))
     );
 
     this.disableObjectTab$ = this.objects$.pipe(map(o => o.length === 0));
