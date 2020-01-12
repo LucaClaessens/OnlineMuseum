@@ -82,7 +82,15 @@ export class ExhibitionComponent implements OnInit, OnDestroy {
     );
 
     this.objects$ = this.exhibitionMeta$.pipe(
-      flatMap(exhibition => this.exhibitionService.fetchExhibitionObjects(exhibition.id))
+      flatMap(exhibition => this.exhibitionService.fetchExhibitionObjects(exhibition.id)),
+      map(groups => groups.sort((a, b) => {
+        // tslint:disable: variable-name
+        const _a = a.key.toLowerCase();
+        const _b = b.key.toLowerCase();
+        if (_a === _b) { return 0; }
+        if (_a > _b) { return 1; }
+        return -1;
+      }))
     );
 
     this.disableObjectTab$ = this.objects$.pipe(map(o => o.length === 0));

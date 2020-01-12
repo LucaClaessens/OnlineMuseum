@@ -41,6 +41,12 @@ interface ObjectMetadata {
     link: string;
 }
 
+interface ModelResource {
+    image: string;
+    link: string;
+    name: string;
+}
+
 interface Amphora {
     amphoraImageUrl: string;
     emoji: string[];
@@ -49,4 +55,9 @@ interface Amphora {
     origin: string;
     timePeriod: number;
     trackId: number;
+}
+
+interface AmphoraFootnote {
+    year: number;
+    text: string;
 }

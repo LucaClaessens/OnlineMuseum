@@ -4,10 +4,10 @@ import { AngularFirestore } from '@angular/fire/firestore';
 @Injectable({
   providedIn: 'root'
 })
-export class AmphoraService {
+export class StockholmFontService {
 
-  amphoraList$ = this.db.collection<Amphora>('amphora').valueChanges();
-  footnotes$ = this.db.collection<AmphoraFootnote>('amphoraFootnotes').valueChanges();
+  modelList$ = this.db.collection<ModelResource>('modelResources')
+    .valueChanges();
 
   constructor(private db: AngularFirestore) { }
 }

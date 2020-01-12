@@ -17,5 +17,13 @@ service cloud.firestore {
       allow read: if true;
       allow write: if false;
     }
+    match /amphoraFootnotes/{oid} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /modelResources/{oid} {
+      allow read: if true;
+      allow write: if false;
+    }
   }
 }

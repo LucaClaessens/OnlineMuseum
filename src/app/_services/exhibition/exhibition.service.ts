@@ -71,8 +71,7 @@ export class ExhibitionService {
           }
           return groups;
         }, [] as ObjectMetadataGroup[]))
-      )
-      .toPromise();
+      ).toPromise();
   }
 
   constructor(private db: AngularFirestore) {

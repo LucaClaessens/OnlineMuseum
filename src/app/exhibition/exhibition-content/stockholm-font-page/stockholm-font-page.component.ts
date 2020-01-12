@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import '@google/model-viewer';
+import '@google/model-viewer/dist/model-viewer';
 import { boxImageUrl, comparison, boxImageShowDuration } from './config';
 import { insertRemove } from './animation';
+import { StockholmFontService } from './stockholm-font.service';
 
 @Component({
   selector: 'museum-stockholm-font-page',
@@ -15,9 +16,11 @@ export class StockholmFontPageComponent implements OnInit {
   afterImageUrl: string;
   boxImage = boxImageUrl;
   showBoxImage = false;
+  boxToggled = false;
   showShop = false;
+  modelList$ = this.stockholmFontService.modelList$;
 
-  constructor() {
+  constructor(private stockholmFontService: StockholmFontService) {
 
     this.beforeImageUrl = comparison.before;
     this.afterImageUrl = comparison.after;
@@ -27,9 +30,12 @@ export class StockholmFontPageComponent implements OnInit {
   gotoShop() {
     this.showShop = true;
     this.showBoxImage = true;
-    setTimeout(() => {
-      this.showBoxImage = false;
-    }, 3000);
+    if (!this.boxToggled) {
+      setTimeout(() => {
+        this.showBoxImage = false;
+        this.boxToggled = true;
+      }, 3000);
+    }
   }
 
   exitShop() {
