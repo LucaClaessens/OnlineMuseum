@@ -92,8 +92,8 @@ export class ExhibitionComponent implements OnInit, OnDestroy {
       })),
       map(g => g.map(g => ({
         key: g.key, objects: g.objects.sort((a, b) => {
-          const _a = a.annotation.toLowerCase();
-          const _b = b.annotation.toLowerCase();
+          const _a = a.annotation;
+          const _b = b.annotation;
           if (_a === _b) { return 0; }
           if (_a > _b) { return 1; }
           return -1;
