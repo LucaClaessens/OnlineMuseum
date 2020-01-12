@@ -9,6 +9,7 @@
                     <div class="object"
                          (deferLoad)="o.loaded = true"
                          *ngFor="let o of category.objects">
+                        <p><span *ngIf="o.annotation">{{o.annotation}}</span></p>
                         <a [href]="o.link"
                            target="_blank"
                            *ngIf="o.loaded">

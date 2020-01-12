@@ -1,23 +1,20 @@
-import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AmphoraService } from './amphora.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'museum-amphora-page',
   templateUrl: './amphora-page.component.html',
   styleUrls: ['./amphora-page.component.scss']
 })
-export class AmphoraPageComponent implements AfterViewInit {
+export class AmphoraPageComponent implements AfterViewInit, OnDestroy {
 
   timeIndicators: number[];
   footerText = 'Loading..';
   private observer: IntersectionObserver;
-  private footerTextEntries: { year: number, text: string }[] = [
-    { year: -660, text: `"It's freezing and snowing in New York—we need global warming!" - Donald Trump 🙍🏼‍♂️` },
-    { year: -530, text: 'Initial value loaded from array (-530)' },
-    { year: -520, text: 'it is def -520😎' },
-    { year: -510, text: '-510 ⏰' },
-    { year: -490, text: 'Vases are objects! (-490)' },
-    { year: -480, text: `Haha now it's 480 BC right?` }
-  ];
+  private footerTextEntries: AmphoraFootnote[];
+  private sub = new Subscription();
 
   @ViewChild('drag', { read: ElementRef, static: true }) drag: ElementRef;
 
@@ -60,7 +57,7 @@ export class AmphoraPageComponent implements AfterViewInit {
     nodes.forEach(node => this.observer.observe(node));
   }
 
-  constructor(private elRef: ElementRef) {
+  constructor(private elRef: ElementRef, private amphoraService: AmphoraService) {
     this.timeIndicators = [
       ...this.constructIndicators(-660, -250),
       0,
@@ -68,9 +65,24 @@ export class AmphoraPageComponent implements AfterViewInit {
     ];
   }
 
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
   ngAfterViewInit() {
     const indicators: HTMLDivElement[] = Array.from(this.drag.nativeElement.querySelectorAll('div.time-indicator'));
-    this.constructObserver(indicators);
+
+    this.sub.add(
+      this.amphoraService.footnotes$.pipe(take(1)).subscribe(() => {
+        this.constructObserver(indicators);
+      })
+    );
+
+    this.sub.add(
+      this.amphoraService.footnotes$.subscribe(notes => {
+        this.footerTextEntries = notes;
+      })
+    );
   }
 
 }

@@ -10,6 +10,7 @@ enum routeIDToClass {
   'L2V4aGliaXRpb24veThhOGFxSjJFeE11SG1XcmVaWkk/ZWlkeD0w' = 'sevenclicks',
   'L2V4aGliaXRpb24veThhOGFxSjJFeE11SG1XcmVaWkk/ZWlkeD0x' = 'amphora',
   'L2V4aGliaXRpb24veThhOGFxSjJFeE11SG1XcmVaWkk/ZWlkeD0y' = 'miseenscene',
+  'L2V4aGliaXRpb24veThhOGFxSjJFeE11SG1XcmVaWkk/ZWlkeD0z' = 'stockholmfont'
 }
 
 @Component({

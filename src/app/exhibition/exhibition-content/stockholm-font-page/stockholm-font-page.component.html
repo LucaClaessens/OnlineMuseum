@@ -1,0 +1,41 @@
+<div class="slider-wrap">
+    <img-comparison-slider>
+        <img slot="before"
+             [src]="beforeImageUrl">
+        <img slot="after"
+             [src]="afterImageUrl">
+    </img-comparison-slider>
+    <p class="itemname">stockholm-font.stl</p>
+    <button (click)="gotoShop()"
+            class="shop shopbutton">
+        Shop
+    </button>
+</div>
+
+<section id="shop"
+         *ngIf="showShop">
+    <div class="shop-content">
+        <button class="shopbutton exitshop"
+                (click)="exitShop()">Close shop</button>
+        <div class="shop-item"
+             *ngFor="let item of modelList$ | async">
+            <div class="item-image">
+                <img [src]="item.image"
+                     [alt]="item.name"
+                     loading="lazy">
+            </div>
+            <div class="item-name">{{item.name}}.stl</div>
+            <div class="item-source"><span class="underline">Source: </span>{{item.name}}.stl</div>
+            <a [href]="item.link">
+                <button class="download-stl">DOWNLOAD STL</button>
+            </a>
+        </div>
+    </div>
+</section>
+
+<div class="box-image"
+     @insertRemove
+     *ngIf="showBoxImage">
+    <img [src]="boxImage"
+         alt="A 3D model in a box">
+</div>
