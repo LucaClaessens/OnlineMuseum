@@ -25,6 +25,7 @@ interface CollectionMetadata {
 }
 
 interface ObjectMetadataDb {
+    annotation: string | null;
     exhibition: string;
     image: string;
     link: string;
@@ -37,6 +38,7 @@ interface ObjectMetadataGroup {
 }
 
 interface ObjectMetadata {
+    annotation: string | null;
     image: string;
     link: string;
 }

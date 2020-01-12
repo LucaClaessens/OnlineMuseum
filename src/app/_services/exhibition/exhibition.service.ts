@@ -64,7 +64,7 @@ export class ExhibitionService {
           if (!objectGroup) {
             groups.push({
               key: group,
-              objects: [object]
+              objects: [{ annotation: null, ...object }]
             });
           } else {
             objectGroup.objects.push(object);
