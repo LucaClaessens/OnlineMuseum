@@ -35,7 +35,7 @@
 
 <div class="box-image"
      @insertRemove
-     *ngIf="showBoxImage">
+     *ngIf="showBoxImage && !boxToggled">
     <img [src]="boxImage"
          alt="A 3D model in a box">
 </div>
