@@ -12,15 +12,9 @@
         flex: 8;
         max-height: 820px;
         transition-delay: 0s;
-        museum-amphora-card{
-            padding: 32px;
-        }
     }
     &:last-child{
         border-bottom: none;
-    }
-    museum-amphora-card{
-        padding: 8px;
     }
     .museum-identifier{
         margin-top: 8px;
@@ -42,7 +36,8 @@
         }
     }
     .year-timeline{
-        width: 500px;
+        width: 33vw;
+        max-width: 1500px;
         display: inline-flex;
         background-color: white;
         height: 100%;

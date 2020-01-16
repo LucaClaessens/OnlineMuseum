@@ -29,7 +29,8 @@
             white-space: nowrap;
             width: auto;
             .starter-spacer, .time-indicator{
-                width: 500px;
+                width: 33vw;
+                max-width: 1500px;
                 display: inline-block;
             }
         }

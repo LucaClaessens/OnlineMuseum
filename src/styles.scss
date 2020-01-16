@@ -20,7 +20,8 @@ html,body{
 }
 
 body{
-    max-width: $body-max-width;
+    width: 100vw;
+    max-width: 2560px;
     color: $offwhite;
 }
 
