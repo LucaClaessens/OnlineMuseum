@@ -92,10 +92,21 @@ export class ExhibitionComponent implements OnInit, OnDestroy {
       })),
       map(g => g.map(g => ({
         key: g.key, objects: g.objects.sort((a, b) => {
+          const asNum = (str) => {
+            const num = str.replace(/[^0-9]/g, '');
+            return parseInt(num, 10);
+          };
+          // tslint:disable: variable-name
           const _a = a.annotation;
           const _b = b.annotation;
-          if (_a === _b) { return 0; }
-          if (_a > _b) { return 1; }
+          const _an = asNum(_a);
+          const _bn = asNum(_b);
+          if (_an === _bn) {
+            if (_a === _b) { return 0; }
+            if (_a > _b) { return 1; }
+            return -1;
+          }
+          if (_an > _bn) { return 1; }
           return -1;
         })
       })))
