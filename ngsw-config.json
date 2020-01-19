@@ -39,16 +39,6 @@
           "f.vimeocdn.com/**"
         ]
       }
-    },
-    {
-      "name": "image-assets",
-      "installMode": "lazy",
-      "updateMode": "prefetch",
-      "resources": {
-        "urls": [
-          "https://firebasestorage.googleapis.com/v0/b/online-museum.appspot.com/o/**"
-        ]
-      }
     }
   ]
 }
