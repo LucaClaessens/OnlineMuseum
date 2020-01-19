@@ -4,35 +4,20 @@
             "CAT KILLER",
             "A CLOCKWORK ORANGE"
         ],
-        "videoUrl": "",
-        "objects": [
-            {
-                "image": "",
-                "description": "Description",
-                "url": "www.google.com"
-            }
-        ]
+        "videoId": "https://player.vimeo.com/video/385687000"
     },
     {
         "titleSegments": [
             "SHOPPING",
             "MARIE ANTOINETTE"
         ],
-        "videoUrl": "",
-        "objects": [
-            {
-                "image": "",
-                "description": "Description Shopping",
-                "url": "www.shooping.com"
-            }
-        ]
+        "videoId": "https://player.vimeo.com/video/385521486"
     },
     {
         "titleSegments": [
             "WELCOME TO JURASSIC PARK",
             "JURASSIC PARK"
         ],
-        "videoUrl": "",
-        "objects": []
+        "videoId": "https://player.vimeo.com/video/385521366"
     }
 ]

@@ -56,8 +56,14 @@ $leading: 84px;
     width: 100%;
     .video-area{
         flex: 3;
-        height: 400px;
-        background: rgba(255,255,255,0.8);
+        background: black;
+        iframe{
+            width: 80vw;
+            height: calc(80vw / (16/9));
+            max-width: 1920px;
+            max-height: calc(1920px / (16/9));
+
+        }
     }
     .details-area{
         width: 180px;

@@ -93,6 +93,9 @@ export class ExhibitionComponent implements OnInit, OnDestroy {
       map(g => g.map(g => ({
         key: g.key, objects: g.objects.sort((a, b) => {
           const asNum = (str) => {
+            if (!str) {
+              return null;
+            }
             const num = str.replace(/[^0-9]/g, '');
             return parseInt(num, 10);
           };

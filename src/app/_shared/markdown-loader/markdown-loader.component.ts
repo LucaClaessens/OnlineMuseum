@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class MarkdownLoaderComponent implements OnInit {
 
   @Input() src: string;
+  @Input() autoload = false;
 
   preload = true;
   error = false;
@@ -31,6 +32,9 @@ export class MarkdownLoaderComponent implements OnInit {
 
 
   ngOnInit() {
+    if (this.autoload) {
+      this.fetchMarkdown();
+    }
   }
 
 }

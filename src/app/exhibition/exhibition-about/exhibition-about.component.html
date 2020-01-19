@@ -1,9 +1,4 @@
 <ng-container *ngIf="data$ | async as data;">
-    <p>{{data.description}}</p>
-
-    <div class="subsection"
-         *ngFor="let s of data.subsections">
-        <p class="subsection-header">{{s.header}}</p>
-        <p class="subsection-body">{{s.body}}</p>
-    </div>
+    <museum-markdown-loader autoload="true"
+                            [src]="data.description"></museum-markdown-loader>
 </ng-container>

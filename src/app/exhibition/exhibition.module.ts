@@ -16,6 +16,8 @@ import { AmphoraCardComponent } from './exhibition-content/amphora-page/amphora-
 import { DeferLoadModule } from '@trademe/ng-defer-load';
 import { PlacementPageComponent } from './exhibition-content/placement-page/placement-page.component';
 import { StockholmFontPageComponent } from './exhibition-content/stockholm-font-page/stockholm-font-page.component';
+import { MarkdownModule } from 'ngx-markdown';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { StockholmFontPageComponent } from './exhibition-content/stockholm-font-
     ExhibitionRoutingModule,
     SharedModule,
     DragScrollModule,
-    DeferLoadModule
+    DeferLoadModule,
+    MarkdownModule.forRoot({ loader: HttpClient }),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [AmphoraPageComponent, ExhibitionNotFoundComponent, PlacementPageComponent, StockholmFontPageComponent]
