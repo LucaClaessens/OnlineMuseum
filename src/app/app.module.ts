@@ -12,6 +12,7 @@ import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestor
 
 import { environment } from '../environments/environment';
 import { ExhibitionBannerComponent } from './_components/exhibition-banner/exhibition-banner.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ExhibitionBannerComponent } from './_components/exhibition-banner/exhib
     BrowserAnimationsModule,
     SharedModule,
     AppRoutingModule,
+    MatSnackBarModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AngularFirestore],
