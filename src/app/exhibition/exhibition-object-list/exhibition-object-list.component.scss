@@ -5,9 +5,12 @@
 }
 
 .object{
-    width: 125px;
-    height: 125px;
-    object-fit: contain;
+    a{
+        width: 125px;
+        height: 125px;
+        object-fit: contain;
+        display: block;
+    }
     padding: 16px;
     img{
         width: 100%;

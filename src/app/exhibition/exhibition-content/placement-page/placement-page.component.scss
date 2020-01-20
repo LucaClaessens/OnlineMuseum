@@ -57,6 +57,9 @@ $leading: 84px;
     .video-area{
         flex: 3;
         background: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         iframe{
             width: 80vw;
             height: calc(80vw / (16/9));
